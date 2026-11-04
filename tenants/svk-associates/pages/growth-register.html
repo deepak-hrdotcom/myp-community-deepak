@@ -620,6 +620,88 @@
     }
   }
 
+  /* ==========================================================================
+     CMS top-nav override (this page only)
+     Lisa's three-tab nav: Registrations + Events here; the CMS adds Sign In
+     (Community) on the right. Deliberately targets the host header outside
+     the root ID. Left menu only; the right-hand icons/profile are untouched.
+     ========================================================================== */
+  /* Hide every left-menu item except Events before the script runs (no flash) */
+  #collapseMenubar > ul.hr-navbar > li:not(.svk_nav_keep):not(:has(> a[href*="/events/"])) {
+    display: none !important;
+  }
+
+  /* Script-applied fallback for browsers without :has() */
+  #collapseMenubar > ul.hr-navbar > li.svk_nav_hide {
+    display: none !important;
+  }
+
+  /* Two-item menu: bigger SVK type, centred in the bar, caret on the text's centre line.
+     Desktop only, so the host's mobile (hamburger) menu keeps its own styling. */
+  @media (min-width: 992px) {
+    #loggedIn_TopLink .NavBar_Left {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    #collapseMenubar > ul.hr-navbar {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    #collapseMenubar > ul.hr-navbar > li {
+      display: flex;
+      align-items: center;
+      height: 60px;
+    }
+
+    #collapseMenubar > ul.hr-navbar > li > a {
+      display: flex;
+      align-items: center;
+      height: 60px;
+      padding: 0 16px !important;
+      font-family: var(--svk-font-heading) !important;
+      font-size: 17px !important;
+      font-weight: 600 !important;
+      line-height: 24px;
+      color: var(--svk-dark-blue) !important;
+      text-decoration: none !important;
+      transition: color 0.2s ease;
+    }
+
+    #collapseMenubar > ul.hr-navbar > li > a:hover,
+    #collapseMenubar > ul.hr-navbar > li > a.menuActive {
+      color: var(--svk-copper) !important;
+      text-decoration: none !important;
+    }
+
+    /* Events: caret sits right after the label, vertically centred */
+    #collapseMenubar > ul.hr-navbar > li > a + .caret {
+      position: static !important;
+      display: block;
+      width: 0;
+      height: 0;
+      margin: 0 0 0 -10px;
+      border-top: 6px solid var(--svk-dark-blue) !important;
+      border-right: 5px solid transparent !important;
+      border-left: 5px solid transparent !important;
+      border-bottom: 0 !important;
+      pointer-events: none;
+      transition: transform 0.2s ease;
+    }
+
+    #collapseMenubar > ul.hr-navbar > li:hover > a + .caret {
+      border-top-color: var(--svk-copper) !important;
+      transform: rotate(180deg);
+    }
+
+    #collapseMenubar > ul.hr-navbar > li > ul.custom-dropdown-menu {
+      margin-top: 60px;
+    }
+  }
+
   @media (prefers-reduced-motion: reduce) {
     #svk-growth-register-embed .svk_btn,
     #svk-growth-register-embed .svk_btn svg,
@@ -764,6 +846,48 @@
     var root = document.getElementById('svk-growth-register-embed');
     if (!root) return;
 
+    // CMS top nav: keep only Events and add Registrations in front of it.
+    // REGISTRATIONS_URL: this page by default; swap for the short URL once it's set up.
+    var REGISTRATIONS_URL = window.location.pathname;
+    var menu = document.querySelector('#collapseMenubar > ul.hr-navbar');
+    if (menu && !menu.querySelector('.svk_nav_reg')) {
+      var events = null;
+      Array.prototype.forEach.call(menu.children, function (li) {
+        var link = li.querySelector(':scope > a');
+        if (!events && link && /\/events\//.test(link.getAttribute('href') || '')) {
+          events = li;
+          li.classList.add('svk_nav_keep');
+        } else {
+          li.classList.add('svk_nav_hide');
+        }
+      });
+
+      // We're on the registrations page, so it takes the active state, not Events
+      if (events) {
+        events.classList.remove('menuDropActive');
+        events.classList.add('menuDrop');
+        var eventsLink = events.querySelector(':scope > a');
+        eventsLink.classList.remove('menuActive');
+        eventsLink.classList.add('menu');
+      }
+
+      // Strip the Feathr click-tracking attributes from the menu links
+      menu.querySelectorAll('a').forEach(function (a) {
+        a.removeAttribute('data-feathr-click-track');
+        a.removeAttribute('data-feathr-link-aids');
+      });
+
+      var reg = document.createElement('li');
+      reg.className = 'branch menuDropActive svk_nav_keep svk_nav_reg';
+      var regLink = document.createElement('a');
+      regLink.className = 'menuActive';
+      regLink.href = REGISTRATIONS_URL;
+      regLink.textContent = 'Registrations';
+      regLink.setAttribute('aria-current', 'page');
+      reg.appendChild(regLink);
+      menu.insertBefore(reg, events || menu.firstChild);
+    }
+
     // Smooth-scroll the "Register for ..." links to their cards,
     // leaving room for the CMS header.
     var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -776,5 +900,19 @@
         window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
       });
     });
+  })();
+
+  // CMS story toolbar ("Meta" link above the story): hide it on this page.
+  // Note: this also hides it for CMS admins viewing the page.
+  (function () {
+    'use strict';
+    function hideToolbar() {
+      document.querySelectorAll('.mp-story-toolbar-wrap').forEach(function (bar) {
+        bar.style.setProperty('display', 'none', 'important');
+      });
+    }
+    hideToolbar();
+    // Run again once the page has loaded, in case the toolbar comes after this embed
+    document.addEventListener('DOMContentLoaded', hideToolbar);
   })();
 </script>
