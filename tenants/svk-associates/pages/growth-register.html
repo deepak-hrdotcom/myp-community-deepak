@@ -1,721 +1,983 @@
-<style>
-  /* ==========================================================================
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    /* ==========================================================================
      SVK & Associates Brand Tokens
      Source: tenants/svk-associates/brand/tokens.css (from SVK Brand Guide)
      Colour ratio: 70% Cream + Dark Blue, 20% Dusty Blue, 10% Copper + Taupe
      Fonts: Roboto 600/700, Nunito 400/600, Petit Formal Script 400
      ========================================================================== */
-  :root {
-    /* Typography */
-    --svk-font-heading: 'Roboto', sans-serif;
-    --svk-font-body: 'Nunito', sans-serif;
-    --svk-font-script: 'Petit Formal Script', cursive;
+    :root {
+      /* Typography */
+      --svk-font-heading: 'Roboto', sans-serif;
+      --svk-font-body: 'Nunito', sans-serif;
+      --svk-font-script: 'Petit Formal Script', cursive;
 
-    /* Primary brand colours (70% Cream + Dark Blue) */
-    --svk-dark-blue: #274B64;
-    --svk-cream: #FFFDF9;
+      /* Primary brand colours (70% Cream + Dark Blue) */
+      --svk-dark-blue: #274B64;
+      --svk-cream: #FFFDF9;
 
-    /* Supporting neutrals (Dusty Blue ~20%) */
-    --svk-soft-gray: #B9C0C6;
-    --svk-charcoal: #474242;
-    --svk-dusty-blue: #9DB2BF;
+      /* Supporting neutrals (Dusty Blue ~20%) */
+      --svk-soft-gray: #B9C0C6;
+      --svk-charcoal: #474242;
+      --svk-dusty-blue: #9DB2BF;
 
-    /* Accents (~10%, support never dominate) */
-    --svk-copper: #AD713E;
-    --svk-taupe: #9B8B81;
+      /* Accents (~10%, support never dominate) */
+      --svk-copper: #AD713E;
+      --svk-taupe: #9B8B81;
 
-    /* Derived tints (alpha of the brand colours, no new hues) */
-    --svk-dusty-tint: rgba(157, 178, 191, 0.18);
-    --svk-dusty-line: rgba(157, 178, 191, 0.45);
-    --svk-blue-tint: rgba(39, 75, 100, 0.08);
-    --svk-blue-line: rgba(39, 75, 100, 0.16);
-    --svk-cream-soft: rgba(255, 253, 249, 0.78);
-    --svk-cream-line: rgba(255, 253, 249, 0.16);
+      /* Derived tints (alpha of the brand colours, no new hues) */
+      --svk-dusty-tint: rgba(157, 178, 191, 0.18);
+      --svk-dusty-line: rgba(157, 178, 191, 0.45);
+      --svk-blue-tint: rgba(39, 75, 100, 0.08);
+      --svk-blue-line: rgba(39, 75, 100, 0.16);
+      --svk-cream-soft: rgba(255, 253, 249, 0.78);
+      --svk-cream-line: rgba(255, 253, 249, 0.16);
 
-    /* Component tokens */
-    --svk-radius-button: 6px;
-    --svk-radius-input: 6px;
-    --svk-radius-card: 16px;
-    --svk-radius-panel: 24px;
-    --svk-ease: cubic-bezier(0.16, 1, 0.3, 1);
-  }
+      /* Component tokens */
+      --svk-radius-button: 6px;
+      --svk-radius-input: 6px;
+      --svk-radius-card: 16px;
+      --svk-radius-panel: 24px;
+      --svk-ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-  /* ==========================================================================
+    /* ==========================================================================
      Scoped Root & Localized Reset
      ========================================================================== */
-  #svk-growth-register-embed {
-    font-family: var(--svk-font-body);
-    font-size: 16px;
-    line-height: 26px;
-    color: var(--svk-charcoal);
-    text-align: left;
-    background-color: var(--svk-cream);
-    width: 100%;
-    position: relative;
-    -webkit-text-size-adjust: 100%;
-    box-sizing: border-box;
-    padding: 0;
-    overflow-x: hidden;
-    overflow-x: clip;
-  }
+    #svk-growth-register-embed {
+      font-family: var(--svk-font-body);
+      font-size: 16px;
+      line-height: 26px;
+      color: var(--svk-charcoal);
+      text-align: left;
+      background-color: var(--svk-cream);
+      width: 100%;
+      position: relative;
+      -webkit-text-size-adjust: 100%;
+      box-sizing: border-box;
+      padding: 0;
+      overflow-x: hidden;
+      overflow-x: clip;
+    }
 
-  #svk-growth-register-embed *,
-  #svk-growth-register-embed *::before,
-  #svk-growth-register-embed *::after {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-  }
+    #svk-growth-register-embed *,
+    #svk-growth-register-embed *::before,
+    #svk-growth-register-embed *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  #svk-growth-register-embed img {
-    display: block;
-    max-width: 100%;
-    height: auto;
-    border: 0;
-  }
+    #svk-growth-register-embed img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+      border: 0;
+    }
 
-  #svk-growth-register-embed svg {
-    vertical-align: middle;
-  }
+    #svk-growth-register-embed svg {
+      vertical-align: middle;
+    }
 
-  #svk-growth-register-embed a {
-    color: inherit;
-    text-decoration: none;
-  }
+    #svk-growth-register-embed a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-  #svk-growth-register-embed ul {
-    list-style: none;
-  }
+    #svk-growth-register-embed ul {
+      list-style: none;
+    }
 
-  #svk-growth-register-embed li::before {
-    content: none;
-  }
+    #svk-growth-register-embed li::before {
+      content: none;
+    }
 
-  #svk-growth-register-embed :focus-visible {
-    outline: 3px solid var(--svk-copper);
-    outline-offset: 3px;
-  }
+    #svk-growth-register-embed :focus-visible {
+      outline: 3px solid var(--svk-copper);
+      outline-offset: 3px;
+    }
 
-  #svk-growth-register-embed h1,
-  #svk-growth-register-embed h2,
-  #svk-growth-register-embed h3 {
-    font-family: var(--svk-font-heading) !important;
-    text-transform: none;
-    color: var(--svk-dark-blue) !important;
-  }
+    #svk-growth-register-embed h1,
+    #svk-growth-register-embed h2,
+    #svk-growth-register-embed h3 {
+      font-family: var(--svk-font-heading) !important;
+      text-transform: none;
+      color: var(--svk-dark-blue) !important;
+    }
 
-  #svk-growth-register-embed p {
-    font-family: var(--svk-font-body) !important;
-    color: var(--svk-charcoal) !important;
-  }
+    #svk-growth-register-embed p {
+      font-family: var(--svk-font-body) !important;
+      color: var(--svk-charcoal) !important;
+    }
 
-  /* Host inheritance shield */
-  #svk-growth-register-embed h1 *,
-  #svk-growth-register-embed h2 *,
-  #svk-growth-register-embed h3 *,
-  #svk-growth-register-embed p * {
-    font-family: inherit !important;
-    font-weight: inherit !important;
-    letter-spacing: inherit !important;
-    color: inherit !important;
-  }
+    /* Host inheritance shield */
+    #svk-growth-register-embed h1 *,
+    #svk-growth-register-embed h2 *,
+    #svk-growth-register-embed h3 *,
+    #svk-growth-register-embed p * {
+      font-family: inherit !important;
+      font-weight: inherit !important;
+      letter-spacing: inherit !important;
+      color: inherit !important;
+    }
 
-  /* ==========================================================================
+    /* ==========================================================================
      Container (1200 / 1320 / 1440)
      ========================================================================== */
-  #svk-growth-register-embed .svk_container {
-    width: 100%;
-    max-width: 1200px;
-    padding-left: 24px;
-    padding-right: 24px;
-    margin: 0 auto;
-    position: relative;
-  }
+    #svk-growth-register-embed .svk_container {
+      width: 100%;
+      max-width: 1200px;
+      padding-left: 24px;
+      padding-right: 24px;
+      margin: 0 auto;
+      position: relative;
+    }
 
-  #svk-growth-register-embed .svk_container::before,
-  #svk-growth-register-embed .svk_container::after,
-  #svk-growth-register-embed .svk_cards::before,
-  #svk-growth-register-embed .svk_cards::after,
-  #svk-growth-register-embed .svk_card_foot::before,
-  #svk-growth-register-embed .svk_card_foot::after,
-  #svk-growth-register-embed .svk_foot_inline::before,
-  #svk-growth-register-embed .svk_foot_inline::after {
-    content: none !important;
-    display: none !important;
-  }
+    #svk-growth-register-embed .svk_container::before,
+    #svk-growth-register-embed .svk_container::after,
+    #svk-growth-register-embed .svk_cards::before,
+    #svk-growth-register-embed .svk_cards::after,
+    #svk-growth-register-embed .svk_card_foot::before,
+    #svk-growth-register-embed .svk_card_foot::after,
+    #svk-growth-register-embed .svk_foot_inline::before,
+    #svk-growth-register-embed .svk_foot_inline::after {
+      content: none !important;
+      display: none !important;
+    }
 
-  /* ==========================================================================
+    /* ==========================================================================
      Buttons (pill shape to match the SVK Lovable microsite)
      ========================================================================== */
-  #svk-growth-register-embed .svk_btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    min-height: 52px;
-    padding: 14px 28px;
-    border-radius: 999px !important;
-    border: none !important;
-    font-family: var(--svk-font-heading) !important;
-    font-size: 16px;
-    font-weight: 600 !important;
-    line-height: 22px;
-    text-align: center;
-    text-decoration: none !important;
-    cursor: pointer;
-    transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s var(--svk-ease), box-shadow 0.25s ease;
-  }
-
-  #svk-growth-register-embed .svk_btn svg {
-    flex-shrink: 0;
-    transition: transform 0.25s var(--svk-ease);
-  }
-
-  #svk-growth-register-embed .svk_btn:hover svg {
-    transform: translateX(4px);
-  }
-
-  #svk-growth-register-embed .svk_btn:hover,
-  #svk-growth-register-embed .svk_btn:focus-visible {
-    transform: translateY(-2px);
-  }
-
-  #svk-growth-register-embed .svk_btn_full {
-    width: 100%;
-  }
-
-  #svk-growth-register-embed .svk_btn_primary {
-    background-color: var(--svk-dark-blue) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: 0 8px 20px rgba(39, 75, 100, 0.22);
-  }
-
-  #svk-growth-register-embed .svk_btn_primary:hover,
-  #svk-growth-register-embed .svk_btn_primary:focus-visible {
-    background-color: var(--svk-copper) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: 0 12px 26px rgba(173, 113, 62, 0.32);
-  }
-
-  #svk-growth-register-embed .svk_btn_dusty {
-    background-color: var(--svk-dusty-blue) !important;
-    color: var(--svk-dark-blue) !important;
-    box-shadow: 0 8px 20px rgba(157, 178, 191, 0.35);
-  }
-
-  #svk-growth-register-embed .svk_btn_copper {
-    background-color: var(--svk-copper) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: 0 8px 20px rgba(173, 113, 62, 0.28);
-  }
-
-  #svk-growth-register-embed .svk_btn_dusty:hover,
-  #svk-growth-register-embed .svk_btn_dusty:focus-visible,
-  #svk-growth-register-embed .svk_btn_copper:hover,
-  #svk-growth-register-embed .svk_btn_copper:focus-visible {
-    background-color: var(--svk-dark-blue) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: 0 12px 26px rgba(39, 75, 100, 0.28);
-  }
-
-  #svk-growth-register-embed .svk_btn_light {
-    background-color: var(--svk-cream) !important;
-    color: var(--svk-dark-blue) !important;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
-  }
-
-  #svk-growth-register-embed .svk_btn_light:hover,
-  #svk-growth-register-embed .svk_btn_light:focus-visible {
-    background-color: var(--svk-copper) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: 0 12px 28px rgba(173, 113, 62, 0.38);
-  }
-
-  /* Secondary (outline) button */
-  #svk-growth-register-embed .svk_btn_outline {
-    cursor: default;
-    background-color: transparent !important;
-    color: var(--svk-dark-blue) !important;
-    box-shadow: inset 0 0 0 2px var(--svk-dark-blue);
-  }
-
-  #svk-growth-register-embed .svk_btn_outline:hover,
-  #svk-growth-register-embed .svk_btn_outline:focus-visible {
-    background-color: var(--svk-dark-blue) !important;
-    color: var(--svk-cream) !important;
-    box-shadow: inset 0 0 0 2px var(--svk-dark-blue), 0 12px 26px rgba(39, 75, 100, 0.22);
-  }
-
-  /* ==========================================================================
-     Options
-     ========================================================================== */
-  #svk-growth-register-embed .svk_options {
-    padding: 64px 0 100px;
-    background-color: var(--svk-dusty-tint);
-  }
-
-  #svk-growth-register-embed .svk_options_head {
-    max-width: 960px;
-    margin: 0 auto 56px;
-    text-align: center;
-  }
-
-
-  #svk-growth-register-embed .svk_head_actions {
-    margin-top: 32px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 14px;
-  }
-
-  #svk-growth-register-embed .svk_head_actions::before,
-  #svk-growth-register-embed .svk_head_actions::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  #svk-growth-register-embed .svk_title {
-    font-size: 40px;
-    font-weight: 700 !important;
-    line-height: 48px;
-    letter-spacing: -1px;
-  }
-
-  #svk-growth-register-embed .svk_options_head p {
-    max-width: 720px;
-    margin: 12px auto 0;
-    font-size: 17px;
-    line-height: 28px;
-  }
-
-  #svk-growth-register-embed .svk_cards {
-    display: grid;
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 28px;
-  }
-
-  #svk-growth-register-embed .svk_card {
-    display: flex;
-    flex-direction: column;
-    padding: 36px;
-    border-radius: var(--svk-radius-panel);
-    border: 1px solid var(--svk-blue-line);
-    background-color: var(--svk-cream);
-    box-shadow: 0 2px 6px rgba(39, 75, 100, 0.05);
-    transition: box-shadow 0.3s ease, transform 0.3s var(--svk-ease);
-  }
-
-  #svk-growth-register-embed .svk_card:hover {
-    box-shadow: 0 24px 48px rgba(39, 75, 100, 0.14);
-  }
-
-  #svk-growth-register-embed .svk_card_wide {
-    grid-column: 1 / -1;
-  }
-
-  /* Icon + title on one row */
-  #svk-growth-register-embed .svk_card_head {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-  }
-
-  #svk-growth-register-embed .svk_card_head::before,
-  #svk-growth-register-embed .svk_card_head::after {
-    content: none !important;
-    display: none !important;
-  }
-
-  #svk-growth-register-embed .svk_icon {
-    display: inline-flex;
-    flex-shrink: 0;
-    align-items: center;
-    justify-content: center;
-    width: 48px;
-    height: 48px;
-    border-radius: 14px;
-  }
-
-  #svk-growth-register-embed .svk_icon_dusty {
-    background-color: var(--svk-dusty-blue);
-    color: var(--svk-dark-blue);
-  }
-
-  #svk-growth-register-embed .svk_icon_copper {
-    background-color: var(--svk-copper);
-    color: var(--svk-cream);
-  }
-
-  #svk-growth-register-embed .svk_icon_blue {
-    background-color: var(--svk-dark-blue);
-    color: var(--svk-cream);
-  }
-
-  #svk-growth-register-embed .svk_icon_light {
-    background-color: var(--svk-cream);
-    color: var(--svk-dark-blue);
-  }
-
-  #svk-growth-register-embed .svk_h3 {
-    font-size: 26px;
-    font-weight: 700 !important;
-    line-height: 32px;
-  }
-
-  #svk-growth-register-embed .svk_date {
-    margin-top: 12px;
-    font-size: 15px;
-    font-weight: 600 !important;
-    line-height: 22px;
-    color: var(--svk-dark-blue) !important;
-  }
-
-  #svk-growth-register-embed .svk_card_desc {
-    margin-top: 12px;
-    font-size: 16px;
-    line-height: 26px;
-  }
-
-  /* Price + button pinned to the card bottom */
-  #svk-growth-register-embed .svk_card_foot {
-    margin-top: auto;
-    padding-top: 32px;
-  }
-
-  #svk-growth-register-embed .svk_price {
-    display: flex;
-    align-items: baseline;
-    gap: 8px;
-    margin-bottom: 16px;
-    padding-top: 24px;
-    border-top: 1px solid var(--svk-blue-line);
-  }
-
-  #svk-growth-register-embed .svk_price_amount {
-    font-family: var(--svk-font-heading);
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 36px;
-    letter-spacing: -0.5px;
-    color: var(--svk-dark-blue);
-  }
-
-  #svk-growth-register-embed .svk_price_cur {
-    font-family: var(--svk-font-heading);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 20px;
-    color: var(--svk-dark-blue);
-  }
-
-  /* Workshop cards: price and button on one row (wraps when narrow) */
-  #svk-growth-register-embed .svk_foot_inline {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 16px 24px;
-    padding-top: 24px;
-    border-top: 1px solid var(--svk-blue-line);
-  }
-
-  #svk-growth-register-embed .svk_foot_inline .svk_price {
-    flex: 0 0 auto;
-    margin: 0;
-    padding: 0;
-    border-top: 0;
-  }
-
-  #svk-growth-register-embed .svk_foot_inline .svk_btn {
-    flex: 1 1 260px;
-    width: auto;
-  }
-
-  /* Wide cards: price and button stacked, centred */
-  #svk-growth-register-embed .svk_card_wide .svk_price {
-    justify-content: center;
-  }
-
-  /* Combined workshops: Dark Blue feature card */
-  #svk-growth-register-embed .svk_card_combo {
-    background-color: var(--svk-dark-blue);
-    border-color: var(--svk-dark-blue);
-    flex-direction: row;
-    align-items: center;
-    gap: 48px;
-  }
-
-  #svk-growth-register-embed .svk_card_combo .svk_combo_main {
-    flex: 1 1 auto;
-    min-width: 0;
-  }
-
-  #svk-growth-register-embed .svk_card_combo .svk_combo_side {
-    flex: 0 0 300px;
-  }
-
-  #svk-growth-register-embed .svk_card_combo h2 {
-    color: var(--svk-cream) !important;
-  }
-
-  #svk-growth-register-embed .svk_card_combo p {
-    color: var(--svk-cream-soft) !important;
-  }
-
-  #svk-growth-register-embed .svk_card_combo .svk_date {
-    color: var(--svk-cream) !important;
-  }
-
-  #svk-growth-register-embed .svk_badge {
-    display: inline-block;
-    margin-bottom: 14px;
-    padding: 5px 14px;
-    border-radius: 999px;
-    border: 1px solid rgba(173, 113, 62, 0.6);
-    background-color: rgba(173, 113, 62, 0.22);
-    font-family: var(--svk-font-heading);
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 18px;
-    letter-spacing: 1px;
-    text-transform: uppercase;
-    color: var(--svk-cream);
-  }
-
-  #svk-growth-register-embed .svk_card_combo .svk_price {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  #svk-growth-register-embed .svk_card_combo .svk_price_amount,
-  #svk-growth-register-embed .svk_card_combo .svk_price_cur {
-    color: var(--svk-cream);
-  }
-
-  /* Coaching card: content left, price right */
-  #svk-growth-register-embed .svk_card_coach {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) 300px;
-    column-gap: 48px;
-    align-items: end;
-  }
-
-  #svk-growth-register-embed .svk_card_coach .svk_card_foot {
-    padding-top: 0;
-  }
-
-  /* Side-column price needs no divider (restored when stacked) */
-  #svk-growth-register-embed .svk_card_coach .svk_price {
-    border-top: 0;
-    padding-top: 0;
-  }
-
-  /* ==========================================================================
-     Wide-screen tiers
-     ========================================================================== */
-  @media (min-width: 1200px) {
-    #svk-growth-register-embed .svk_container {
-      max-width: 1320px;
-      padding-left: 28px;
-      padding-right: 28px;
+    #svk-growth-register-embed .svk_btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 52px;
+      padding: 14px 28px;
+      border-radius: 999px !important;
+      border: none !important;
+      font-family: var(--svk-font-heading) !important;
+      font-size: 16px;
+      font-weight: 600 !important;
+      line-height: 22px;
+      text-align: center;
+      text-decoration: none !important;
+      cursor: pointer;
+      transition: background-color 0.2s ease, color 0.2s ease, transform 0.25s var(--svk-ease), box-shadow 0.25s ease;
     }
-    #svk-growth-register-embed .svk_title {
-      font-size: 44px;
-      line-height: 52px;
-    }
-    #svk-growth-register-embed .svk_card {
-      padding: 40px;
-    }
-  }
 
-  @media (min-width: 1440px) {
-    #svk-growth-register-embed .svk_container {
-      max-width: 1440px;
-      padding-left: 32px;
-      padding-right: 32px;
+    #svk-growth-register-embed .svk_btn svg {
+      flex-shrink: 0;
+      transition: transform 0.25s var(--svk-ease);
     }
-    #svk-growth-register-embed .svk_title {
-      font-size: 48px;
-      line-height: 56px;
-    }
-    #svk-growth-register-embed .svk_h3 {
-      font-size: 28px;
-      line-height: 34px;
-    }
-    #svk-growth-register-embed .svk_card {
-      padding: 44px;
-    }
-    #svk-growth-register-embed .svk_cards {
-      gap: 32px;
-    }
-  }
 
-  /* ==========================================================================
-     Tablet & mobile
-     ========================================================================== */
-  @media (max-width: 991px) {
-    #svk-growth-register-embed .svk_card_combo {
-      flex-direction: column;
-      align-items: stretch;
-      gap: 0;
+    #svk-growth-register-embed .svk_btn:hover svg {
+      transform: translateX(4px);
     }
-    #svk-growth-register-embed .svk_card_combo .svk_combo_side {
-      flex-basis: auto;
-      padding-top: 32px;
-    }
-    #svk-growth-register-embed .svk_card_coach {
-      grid-template-columns: minmax(0, 1fr);
-    }
-    #svk-growth-register-embed .svk_card_coach .svk_card_foot {
-      padding-top: 32px;
-    }
-    #svk-growth-register-embed .svk_card_coach .svk_price {
-      border-top: 1px solid var(--svk-blue-line);
-      padding-top: 24px;
-    }
-  }
 
-  @media (max-width: 899px) {
-    #svk-growth-register-embed .svk_cards {
-      grid-template-columns: minmax(0, 1fr);
+    #svk-growth-register-embed .svk_btn:hover,
+    #svk-growth-register-embed .svk_btn:focus-visible {
+      transform: translateY(-2px);
     }
-  }
 
-  @media (max-width: 599px) {
-    #svk-growth-register-embed .svk_options {
-      padding: 56px 0 72px;
-    }
-    #svk-growth-register-embed .svk_title {
-      font-size: 32px;
-      line-height: 38px;
-    }
-    #svk-growth-register-embed .svk_card {
-      padding: 28px 22px;
-    }
-    #svk-growth-register-embed .svk_h3 {
-      font-size: 23px;
-      line-height: 29px;
-    }
-    #svk-growth-register-embed .svk_options {
-      padding-top: 40px;
-    }
-    #svk-growth-register-embed .svk_head_actions .svk_btn {
+    #svk-growth-register-embed .svk_btn_full {
       width: 100%;
     }
-    #svk-growth-register-embed .svk_icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
+
+    #svk-growth-register-embed .svk_btn_primary {
+      background-color: var(--svk-dark-blue) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: 0 8px 20px rgba(39, 75, 100, 0.22);
     }
-    #svk-growth-register-embed .svk_card_head {
+
+    #svk-growth-register-embed .svk_btn_primary:hover,
+    #svk-growth-register-embed .svk_btn_primary:focus-visible {
+      background-color: var(--svk-copper) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: 0 12px 26px rgba(173, 113, 62, 0.32);
+    }
+
+    #svk-growth-register-embed .svk_btn_dusty {
+      background-color: var(--svk-dusty-blue) !important;
+      color: var(--svk-dark-blue) !important;
+      box-shadow: 0 8px 20px rgba(157, 178, 191, 0.35);
+    }
+
+    #svk-growth-register-embed .svk_btn_copper {
+      background-color: var(--svk-copper) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: 0 8px 20px rgba(173, 113, 62, 0.28);
+    }
+
+    #svk-growth-register-embed .svk_btn_dusty:hover,
+    #svk-growth-register-embed .svk_btn_dusty:focus-visible,
+    #svk-growth-register-embed .svk_btn_copper:hover,
+    #svk-growth-register-embed .svk_btn_copper:focus-visible {
+      background-color: var(--svk-dark-blue) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: 0 12px 26px rgba(39, 75, 100, 0.28);
+    }
+
+    #svk-growth-register-embed .svk_btn_light {
+      background-color: var(--svk-cream) !important;
+      color: var(--svk-dark-blue) !important;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
+    }
+
+    #svk-growth-register-embed .svk_btn_light:hover,
+    #svk-growth-register-embed .svk_btn_light:focus-visible {
+      background-color: var(--svk-copper) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: 0 12px 28px rgba(173, 113, 62, 0.38);
+    }
+
+    /* Secondary (outline) button */
+    #svk-growth-register-embed .svk_btn_outline {
+      cursor: default;
+      background-color: transparent !important;
+      color: var(--svk-dark-blue) !important;
+      box-shadow: inset 0 0 0 2px var(--svk-dark-blue);
+    }
+
+    #svk-growth-register-embed .svk_btn_outline:hover,
+    #svk-growth-register-embed .svk_btn_outline:focus-visible {
+      background-color: var(--svk-dark-blue) !important;
+      color: var(--svk-cream) !important;
+      box-shadow: inset 0 0 0 2px var(--svk-dark-blue), 0 12px 26px rgba(39, 75, 100, 0.22);
+    }
+
+    /* ==========================================================================
+     Options
+     ========================================================================== */
+    #svk-growth-register-embed .svk_options {
+      padding: 64px 0 100px;
+      background-color: var(--svk-dusty-tint);
+    }
+
+    #svk-growth-register-embed .svk_options_head {
+      max-width: 960px;
+      margin: 0 auto 56px;
+      text-align: center;
+    }
+
+
+    #svk-growth-register-embed .svk_head_actions {
+      margin-top: 32px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
       gap: 14px;
     }
-    #svk-growth-register-embed .svk_card .svk_btn {
-      padding-left: 16px;
-      padding-right: 16px;
-      font-size: 15px;
+
+    #svk-growth-register-embed .svk_head_actions::before,
+    #svk-growth-register-embed .svk_head_actions::after {
+      content: none !important;
+      display: none !important;
     }
-    #svk-growth-register-embed .svk_card .svk_btn svg {
-      display: none;
+
+    #svk-growth-register-embed .svk_title {
+      font-size: 40px;
+      font-weight: 700 !important;
+      line-height: 48px;
+      letter-spacing: -1px;
     }
-  }
 
-  /* ==========================================================================
-     CMS top-nav override (this page only)
-     Lisa's three-tab nav: Registrations + Events here; the CMS adds Sign In
-     (Community) on the right. Deliberately targets the host header outside
-     the root ID. Left menu only; the right-hand icons/profile are untouched.
-     ========================================================================== */
-  /* Hide every left-menu item except Events before the script runs (no flash) */
-  #collapseMenubar > ul.hr-navbar > li:not(.svk_nav_keep):not(:has(> a[href*="/events/"])) {
-    display: none !important;
-  }
+    #svk-growth-register-embed .svk_options_head p {
+      max-width: 720px;
+      margin: 12px auto 0;
+      font-size: 17px;
+      line-height: 28px;
+    }
 
-  /* Script-applied fallback for browsers without :has() */
-  #collapseMenubar > ul.hr-navbar > li.svk_nav_hide {
-    display: none !important;
-  }
+    #svk-growth-register-embed .svk_cards {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 28px;
+    }
 
-  /* Two-item menu: bigger SVK type, centred in the bar, caret on the text's centre line.
-     Desktop only, so the host's mobile (hamburger) menu keeps its own styling. */
-  @media (min-width: 992px) {
-    #loggedIn_TopLink .NavBar_Left {
-      flex: 1 1 auto;
+    #svk-growth-register-embed .svk_card {
       display: flex;
+      flex-direction: column;
+      padding: 36px;
+      border-radius: var(--svk-radius-panel);
+      border: 1px solid var(--svk-blue-line);
+      background-color: var(--svk-cream);
+      box-shadow: 0 2px 6px rgba(39, 75, 100, 0.05);
+      transition: box-shadow 0.3s ease, transform 0.3s var(--svk-ease);
+    }
+
+    #svk-growth-register-embed .svk_card:hover {
+      box-shadow: 0 24px 48px rgba(39, 75, 100, 0.14);
+    }
+
+    #svk-growth-register-embed .svk_card_wide {
+      grid-column: 1 / -1;
+    }
+
+    /* Icon + title on one row */
+    #svk-growth-register-embed .svk_card_head {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    #svk-growth-register-embed .svk_card_head::before,
+    #svk-growth-register-embed .svk_card_head::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    #svk-growth-register-embed .svk_icon {
+      display: inline-flex;
+      flex-shrink: 0;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+    }
+
+    #svk-growth-register-embed .svk_icon_dusty {
+      background-color: var(--svk-dusty-blue);
+      color: var(--svk-dark-blue);
+    }
+
+    #svk-growth-register-embed .svk_icon_copper {
+      background-color: var(--svk-copper);
+      color: var(--svk-cream);
+    }
+
+    #svk-growth-register-embed .svk_icon_blue {
+      background-color: var(--svk-dark-blue);
+      color: var(--svk-cream);
+    }
+
+    #svk-growth-register-embed .svk_icon_light {
+      background-color: var(--svk-cream);
+      color: var(--svk-dark-blue);
+    }
+
+    #svk-growth-register-embed .svk_h3 {
+      font-size: 26px;
+      font-weight: 700 !important;
+      line-height: 32px;
+    }
+
+    #svk-growth-register-embed .svk_date {
+      margin-top: 12px;
+      font-size: 15px;
+      font-weight: 600 !important;
+      line-height: 22px;
+      color: var(--svk-dark-blue) !important;
+    }
+
+    #svk-growth-register-embed .svk_card_desc {
+      margin-top: 12px;
+      font-size: 16px;
+      line-height: 26px;
+    }
+
+    /* Price + button pinned to the card bottom */
+    #svk-growth-register-embed .svk_card_foot {
+      margin-top: auto;
+      padding-top: 32px;
+    }
+
+    #svk-growth-register-embed .svk_price {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      margin-bottom: 16px;
+      padding-top: 24px;
+      border-top: 1px solid var(--svk-blue-line);
+    }
+
+    #svk-growth-register-embed .svk_price_amount {
+      font-family: var(--svk-font-heading);
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 36px;
+      letter-spacing: -0.5px;
+      color: var(--svk-dark-blue);
+    }
+
+    #svk-growth-register-embed .svk_price_cur {
+      font-family: var(--svk-font-heading);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 20px;
+      color: var(--svk-dark-blue);
+    }
+
+    /* Workshop cards: price and button on one row (wraps when narrow) */
+    #svk-growth-register-embed .svk_foot_inline {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px 24px;
+      padding-top: 24px;
+      border-top: 1px solid var(--svk-blue-line);
+    }
+
+    #svk-growth-register-embed .svk_foot_inline .svk_price {
+      flex: 0 0 auto;
+      margin: 0;
+      padding: 0;
+      border-top: 0;
+    }
+
+    #svk-growth-register-embed .svk_foot_inline .svk_btn {
+      flex: 1 1 260px;
+      width: auto;
+    }
+
+    /* Wide cards: price and button stacked, centred */
+    #svk-growth-register-embed .svk_card_wide .svk_price {
       justify-content: center;
     }
 
-    #collapseMenubar > ul.hr-navbar {
+    /* Combined workshops: Dark Blue feature card */
+    #svk-growth-register-embed .svk_card_combo {
+      background-color: var(--svk-dark-blue);
+      border-color: var(--svk-dark-blue);
+      flex-direction: row;
+      align-items: center;
+      gap: 48px;
+    }
+
+    #svk-growth-register-embed .svk_card_combo .svk_combo_main {
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+
+    #svk-growth-register-embed .svk_card_combo .svk_combo_side {
+      flex: 0 0 300px;
+    }
+
+    #svk-growth-register-embed .svk_card_combo h2 {
+      color: var(--svk-cream) !important;
+    }
+
+    #svk-growth-register-embed .svk_card_combo p {
+      color: var(--svk-cream-soft) !important;
+    }
+
+    #svk-growth-register-embed .svk_card_combo .svk_date {
+      color: var(--svk-cream) !important;
+    }
+
+    #svk-growth-register-embed .svk_badge {
+      display: inline-block;
+      margin-bottom: 14px;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(173, 113, 62, 0.6);
+      background-color: rgba(173, 113, 62, 0.22);
+      font-family: var(--svk-font-heading);
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 18px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--svk-cream);
+    }
+
+    #svk-growth-register-embed .svk_card_combo .svk_price {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    #svk-growth-register-embed .svk_card_combo .svk_price_amount,
+    #svk-growth-register-embed .svk_card_combo .svk_price_cur {
+      color: var(--svk-cream);
+    }
+
+    /* Coaching card: content left, price right */
+    #svk-growth-register-embed .svk_card_coach {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 300px;
+      column-gap: 48px;
+      align-items: end;
+    }
+
+    #svk-growth-register-embed .svk_card_coach .svk_card_foot {
+      padding-top: 0;
+    }
+
+    /* Side-column price needs no divider (restored when stacked) */
+    #svk-growth-register-embed .svk_card_coach .svk_price {
+      border-top: 0;
+      padding-top: 0;
+    }
+
+    /* ==========================================================================
+     Wide-screen tiers
+     ========================================================================== */
+    @media (min-width: 1200px) {
+      #svk-growth-register-embed .svk_container {
+        max-width: 1320px;
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      #svk-growth-register-embed .svk_title {
+        font-size: 44px;
+        line-height: 52px;
+      }
+
+      #svk-growth-register-embed .svk_card {
+        padding: 40px;
+      }
+    }
+
+    @media (min-width: 1440px) {
+      #svk-growth-register-embed .svk_container {
+        max-width: 1440px;
+        padding-left: 32px;
+        padding-right: 32px;
+      }
+
+      #svk-growth-register-embed .svk_title {
+        font-size: 48px;
+        line-height: 56px;
+      }
+
+      #svk-growth-register-embed .svk_h3 {
+        font-size: 28px;
+        line-height: 34px;
+      }
+
+      #svk-growth-register-embed .svk_card {
+        padding: 44px;
+      }
+
+      #svk-growth-register-embed .svk_cards {
+        gap: 32px;
+      }
+    }
+
+    /* ==========================================================================
+     Tablet & mobile
+     ========================================================================== */
+    @media (max-width: 991px) {
+      #svk-growth-register-embed .svk_card_combo {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      #svk-growth-register-embed .svk_card_combo .svk_combo_side {
+        flex-basis: auto;
+        padding-top: 32px;
+      }
+
+      #svk-growth-register-embed .svk_card_coach {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      #svk-growth-register-embed .svk_card_coach .svk_card_foot {
+        padding-top: 32px;
+      }
+
+      #svk-growth-register-embed .svk_card_coach .svk_price {
+        border-top: 1px solid var(--svk-blue-line);
+        padding-top: 24px;
+      }
+    }
+
+    @media (max-width: 899px) {
+      #svk-growth-register-embed .svk_cards {
+        grid-template-columns: minmax(0, 1fr);
+      }
+    }
+
+    @media (max-width: 599px) {
+      #svk-growth-register-embed .svk_options {
+        padding: 56px 0 72px;
+      }
+
+      #svk-growth-register-embed .svk_title {
+        font-size: 32px;
+        line-height: 38px;
+      }
+
+      #svk-growth-register-embed .svk_card {
+        padding: 28px 22px;
+      }
+
+      #svk-growth-register-embed .svk_h3 {
+        font-size: 23px;
+        line-height: 29px;
+      }
+
+      #svk-growth-register-embed .svk_options {
+        padding-top: 40px;
+      }
+
+      #svk-growth-register-embed .svk_head_actions .svk_btn {
+        width: 100%;
+      }
+
+      #svk-growth-register-embed .svk_icon {
+        width: 42px;
+        height: 42px;
+        border-radius: 12px;
+      }
+
+      #svk-growth-register-embed .svk_card_head {
+        gap: 14px;
+      }
+
+      #svk-growth-register-embed .svk_card .svk_btn {
+        padding-left: 16px;
+        padding-right: 16px;
+        font-size: 15px;
+      }
+
+      #svk-growth-register-embed .svk_card .svk_btn svg {
+        display: none;
+      }
+    }
+
+    /* ==========================================================================
+     Page header (replaces the CMS header on this page)
+     The CMS top bar (#loggedIn_TopLink) is hidden; this page draws its own
+     header: logo left, nav + Login right. Deliberately targets the host
+     header outside the root ID.
+     ========================================================================== */
+    #loggedIn_TopLink,
+    .TopLink_new {
+      display: none !important;
+    }
+
+    #svk-growth-register-embed .svk_topbar {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background-color: var(--svk-cream);
+      border-bottom: 1px solid var(--svk-blue-line);
+    }
+
+    #svk-growth-register-embed .svk_topbar_bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      height: 84px;
+    }
+
+    #svk-growth-register-embed .svk_topbar_bar::before,
+    #svk-growth-register-embed .svk_topbar_bar::after,
+    #svk-growth-register-embed .svk_nav::before,
+    #svk-growth-register-embed .svk_nav::after,
+    #svk-growth-register-embed .svk_nav_list::before,
+    #svk-growth-register-embed .svk_nav_list::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    /* The CDN logo is a JPG (blue on white); multiply drops the white onto the cream bar */
+    #svk-growth-register-embed .svk_logo_img {
+      width: 64px;
+      height: 64px;
+      max-width: none;
+      object-fit: contain;
+      mix-blend-mode: multiply;
+    }
+
+    #svk-growth-register-embed .svk_nav {
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
-    #collapseMenubar > ul.hr-navbar > li {
+    #svk-growth-register-embed .svk_nav_list {
       display: flex;
       align-items: center;
-      height: 60px;
+      gap: 4px;
     }
 
-    #collapseMenubar > ul.hr-navbar > li > a {
-      display: flex;
+    #svk-growth-register-embed .svk_nav_item {
+      position: relative;
+    }
+
+    #svk-growth-register-embed .svk_nav_link {
+      display: inline-flex;
       align-items: center;
-      height: 60px;
-      padding: 0 16px !important;
-      font-family: var(--svk-font-heading) !important;
-      font-size: 17px !important;
+      gap: 8px;
+      height: 44px;
+      padding: 0 14px;
+      border: 0;
+      border-radius: 999px;
+      background: none;
+      -webkit-appearance: none;
+      appearance: none;
+      font-family: var(--svk-font-body) !important;
+      font-size: 16px;
       font-weight: 600 !important;
-      line-height: 24px;
+      line-height: 22px;
       color: var(--svk-dark-blue) !important;
       text-decoration: none !important;
+      cursor: pointer;
       transition: color 0.2s ease;
     }
 
-    #collapseMenubar > ul.hr-navbar > li > a:hover,
-    #collapseMenubar > ul.hr-navbar > li > a.menuActive {
+    #svk-growth-register-embed .svk_nav_link:hover,
+    #svk-growth-register-embed .svk_nav_link.svk_is_current,
+    #svk-growth-register-embed .svk_is_open>.svk_nav_link {
       color: var(--svk-copper) !important;
-      text-decoration: none !important;
     }
 
-    /* Events: caret sits right after the label, vertically centred */
-    #collapseMenubar > ul.hr-navbar > li > a + .caret {
-      position: static !important;
-      display: block;
-      width: 0;
-      height: 0;
-      margin: 0 0 0 -10px;
-      border-top: 6px solid var(--svk-dark-blue) !important;
-      border-right: 5px solid transparent !important;
-      border-left: 5px solid transparent !important;
-      border-bottom: 0 !important;
-      pointer-events: none;
+    #svk-growth-register-embed .svk_caret {
+      flex-shrink: 0;
       transition: transform 0.2s ease;
     }
 
-    #collapseMenubar > ul.hr-navbar > li:hover > a + .caret {
-      border-top-color: var(--svk-copper) !important;
+    #svk-growth-register-embed .svk_is_open>.svk_nav_link .svk_caret {
       transform: rotate(180deg);
     }
 
-    #collapseMenubar > ul.hr-navbar > li > ul.custom-dropdown-menu {
-      margin-top: 60px;
+    #svk-growth-register-embed .svk_sub {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      min-width: 220px;
+      margin-top: 8px;
+      padding: 8px;
+      border: 1px solid var(--svk-blue-line);
+      border-radius: var(--svk-radius-card);
+      background-color: var(--svk-cream);
+      box-shadow: 0 18px 40px rgba(39, 75, 100, 0.16);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(6px);
+      transition: opacity 0.2s ease, transform 0.2s var(--svk-ease), visibility 0.2s;
     }
-  }
 
-  @media (prefers-reduced-motion: reduce) {
-    #svk-growth-register-embed .svk_btn,
-    #svk-growth-register-embed .svk_btn svg,
-    #svk-growth-register-embed .svk_card {
-      transition: none;
+    /* Hover bridge so the menu stays open while the pointer crosses the gap */
+    #svk-growth-register-embed .svk_sub::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: 0;
+      right: 0;
+      height: 10px;
     }
-    #svk-growth-register-embed .svk_btn:hover,
-    #svk-growth-register-embed .svk_btn:hover svg {
-      transform: none;
-    }
-  }
-</style>
 
-<!--
+    #svk-growth-register-embed .svk_is_open>.svk_sub {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #svk-growth-register-embed .svk_sub a {
+      display: block;
+      padding: 10px 14px;
+      border-radius: 10px;
+      font-family: var(--svk-font-body) !important;
+      font-size: 15px;
+      font-weight: 600 !important;
+      line-height: 22px;
+      color: var(--svk-dark-blue) !important;
+      text-decoration: none !important;
+      transition: background-color 0.2s ease, color 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_sub a:hover,
+    #svk-growth-register-embed .svk_sub a:focus-visible {
+      background-color: var(--svk-blue-tint);
+      color: var(--svk-copper) !important;
+    }
+
+    /* Login: no link yet */
+    #svk-growth-register-embed .svk_login {
+      min-height: 44px;
+      padding: 10px 26px;
+      font-size: 15px;
+    }
+
+    /* Hamburger (mobile only) */
+    #svk-growth-register-embed .svk_nav_toggle {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 5px;
+      width: 44px;
+      height: 44px;
+      border: 0;
+      border-radius: var(--svk-radius-button);
+      background: none;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    #svk-growth-register-embed .svk_nav_toggle span {
+      display: block;
+      width: 24px;
+      height: 2px;
+      border-radius: 2px;
+      background-color: var(--svk-dark-blue);
+      transition: transform 0.3s var(--svk-ease), opacity 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_nav_open .svk_nav_toggle span:nth-child(1) {
+      transform: translateY(7px) rotate(45deg);
+    }
+
+    #svk-growth-register-embed .svk_nav_open .svk_nav_toggle span:nth-child(2) {
+      opacity: 0;
+    }
+
+    #svk-growth-register-embed .svk_nav_open .svk_nav_toggle span:nth-child(3) {
+      transform: translateY(-7px) rotate(-45deg);
+    }
+
+    @media (min-width: 992px) {
+      #svk-growth-register-embed .svk_has_sub:hover>.svk_sub {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(0);
+      }
+
+      #svk-growth-register-embed .svk_has_sub:hover>.svk_nav_link {
+        color: var(--svk-copper) !important;
+      }
+
+      #svk-growth-register-embed .svk_has_sub:hover>.svk_nav_link .svk_caret {
+        transform: rotate(180deg);
+      }
+    }
+
+    @media (min-width: 1200px) {
+      #svk-growth-register-embed .svk_topbar_bar {
+        height: 92px;
+      }
+
+      #svk-growth-register-embed .svk_logo_img {
+        width: 72px;
+        height: 72px;
+      }
+
+      #svk-growth-register-embed .svk_nav_link {
+        padding: 0 16px;
+        font-size: 17px;
+      }
+    }
+
+    @media (max-width: 991px) {
+      #svk-growth-register-embed .svk_topbar_bar {
+        height: 72px;
+      }
+
+      #svk-growth-register-embed .svk_logo_img {
+        width: 56px;
+        height: 56px;
+      }
+
+      #svk-growth-register-embed .svk_nav_toggle {
+        display: flex;
+      }
+
+      #svk-growth-register-embed .svk_nav {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 16px;
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+        padding: 8px 24px 28px;
+        background-color: var(--svk-cream);
+        border-bottom: 1px solid var(--svk-blue-line);
+        box-shadow: 0 24px 40px rgba(39, 75, 100, 0.14);
+      }
+
+      #svk-growth-register-embed .svk_nav_open .svk_nav {
+        display: flex;
+      }
+
+      #svk-growth-register-embed .svk_nav_list {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+
+      #svk-growth-register-embed .svk_nav_item {
+        border-bottom: 1px solid var(--svk-blue-line);
+      }
+
+      #svk-growth-register-embed .svk_nav_link {
+        width: 100%;
+        height: 52px;
+        padding: 0;
+        justify-content: space-between;
+        border-radius: 0;
+        font-size: 17px;
+      }
+
+      #svk-growth-register-embed .svk_sub {
+        position: static;
+        display: none;
+        min-width: 0;
+        margin: 0 0 12px;
+        padding: 0 0 0 12px;
+        border: 0;
+        border-radius: 0;
+        box-shadow: none;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        transition: none;
+      }
+
+      #svk-growth-register-embed .svk_sub::before {
+        content: none;
+      }
+
+      #svk-growth-register-embed .svk_is_open>.svk_sub {
+        display: block;
+      }
+
+      #svk-growth-register-embed .svk_login {
+        width: 100%;
+        min-height: 52px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      #svk-growth-register-embed .svk_btn,
+      #svk-growth-register-embed .svk_btn svg,
+      #svk-growth-register-embed .svk_card {
+        transition: none;
+      }
+
+      #svk-growth-register-embed .svk_btn:hover,
+      #svk-growth-register-embed .svk_btn:hover svg {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+
+
+  <!--
   SVK Growth Workshops: registration / checkout landing page.
   Visitors arrive from the SVK Lovable microsite. Each purchase button uses the
   CMS quick-login-m1 + scoPage pop-up (sign-up, password, Stripe, consents).
@@ -728,191 +990,281 @@
   Each ID appears twice in its button href (vars= and productID=).
   Prices: all set to the 1,500 placeholder for now (data-svk-price on each card).
 -->
-<div id="svk-growth-register-embed" class="svk-growth-register-embed">
+  <div id="svk-growth-register-embed" class="svk-growth-register-embed">
 
-  <!-- Register Now: options -->
-  <section class="svk_options">
-    <div class="svk_container">
-      <div class="svk_options_head">
-        <h1 class="svk_title">Register Now</h1>
-        <p>Choose the Diagnostic Workshop to assess your foundation, the Marketing Workshop to develop demand beyond your network, or Coaching QuickStart for personalized support over 90 days. Take either workshop independently or attend both.</p>
-        <div class="svk_head_actions">
-          <a class="svk_btn svk_btn_primary" href="#svk-workshops" data-svk-scroll>
-            Register for Workshops
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </a>
-          <a class="svk_btn svk_btn_copper" href="#svk-coaching" data-svk-scroll>
-            Register for Coaching
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-          </a>
-          <!-- Links to SVK's Lovable microsite once SVK sends a working public URL: add href="URL" target="_blank" rel="noopener". -->
-          <a class="svk_btn svk_btn_outline">
-            Explore workshops &amp; coaching
-          </a>
+    <!-- Page header (the CMS header is hidden on this page) -->
+    <header class="svk_topbar">
+      <div class="svk_container svk_topbar_bar">
+        <img class="svk_logo_img"
+          src="https://public-cdn.svk.myp.community/images/svk-associates-logo-blue-transparent-400px.jpg"
+          alt="SVK &amp; Associates" width="64" height="64">
+
+        <button type="button" class="svk_nav_toggle" aria-label="Open menu" aria-expanded="false"
+          aria-controls="svk-nav">
+          <span></span><span></span><span></span>
+        </button>
+
+        <nav class="svk_nav" id="svk-nav" aria-label="Main">
+          <ul class="svk_nav_list">
+            <li class="svk_nav_item">
+              <a class="svk_nav_link svk_is_current" href="#svk-register" aria-current="page"
+                data-svk-scroll>Registrations</a>
+            </li>
+            <li class="svk_nav_item svk_has_sub">
+              <button type="button" class="svk_nav_link" aria-expanded="false" aria-controls="svk-nav-workshops">
+                Workshops
+                <svg class="svk_caret" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="m6 9 6 6 6-6"></path>
+                </svg>
+              </button>
+              <ul class="svk_sub" id="svk-nav-workshops">
+                <li><a href="#svk-workshops" data-svk-scroll>Growth Diagnostic</a></li>
+                <li><a href="#svk-marketing" data-svk-scroll>Growth Marketing</a></li>
+                <li><a href="#svk-coaching" data-svk-scroll>Coaching</a></li>
+              </ul>
+            </li>
+          </ul>
+          <!-- Login: no link yet -->
+          <button type="button" class="svk_btn svk_btn_primary svk_login">Login</button>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Register Now: options -->
+    <section class="svk_options" id="svk-register">
+      <div class="svk_container">
+        <div class="svk_options_head">
+          <h1 class="svk_title">Register Now</h1>
+          <p>Choose the Diagnostic Workshop to assess your foundation, the Marketing Workshop to develop demand beyond
+            your network, or Coaching QuickStart for personalized support over 90 days. Take either workshop
+            independently or attend both.</p>
+          <div class="svk_head_actions">
+            <a class="svk_btn svk_btn_primary" href="#svk-workshops" data-svk-scroll>
+              Register for Workshops
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <a class="svk_btn svk_btn_copper" href="#svk-coaching" data-svk-scroll>
+              Register for Coaching
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M5 12h14"></path>
+                <path d="m12 5 7 7-7 7"></path>
+              </svg>
+            </a>
+            <!-- Links to SVK's Lovable microsite once SVK sends a working public URL: add href="URL" target="_blank" rel="noopener". -->
+            <a class="svk_btn svk_btn_outline">
+              Explore workshops &amp; coaching
+            </a>
+          </div>
+        </div>
+
+        <div class="svk_cards">
+
+          <!-- 1. Growth Diagnostic Workshop -->
+          <article class="svk_card" id="svk-workshops" data-svk-price="1500">
+            <div class="svk_card_head">
+              <span class="svk_icon svk_icon_dusty">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <circle cx="12" cy="12" r="10"></circle>
+                  <path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z">
+                  </path>
+                </svg>
+              </span>
+              <h2 class="svk_h3">Growth Diagnostic Workshop</h2>
+            </div>
+            <p class="svk_date">December 8, 2026 · 11 a.m.–2 p.m. ET</p>
+            <p class="svk_card_desc">Understand what your early traction proves, identify your most important growth
+              foundation gap, and decide what to work on before you hire, spend or scale.</p>
+            <div class="svk_card_foot">
+              <div class="svk_foot_inline">
+                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+                </div>
+                <a class="svk_btn svk_btn_dusty svk_btn_full quick-login-m1 scoPage"
+                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_DIAGNOSTIC&amp;productID=PRODUCT_ID_DIAGNOSTIC&amp;basket.fill=1&amp;linkTo=product.show"
+                  data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
+                  Purchase the diagnostic workshop
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2. Growth Marketing Workshop -->
+          <article class="svk_card" id="svk-marketing" data-svk-price="1500">
+            <div class="svk_card_head">
+              <span class="svk_icon svk_icon_copper">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path
+                    d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z">
+                  </path>
+                  <path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"></path>
+                  <path d="M8 6v8"></path>
+                </svg>
+              </span>
+              <h2 class="svk_h3">Growth Marketing Workshop</h2>
+            </div>
+            <p class="svk_date">December 10, 2026 · 11 a.m.–2 p.m. ET</p>
+            <p class="svk_card_desc">Clarify your message, focus your marketing effort, and design your first demand
+              generation test—with a clear decision about what to launch or strengthen first.</p>
+            <div class="svk_card_foot">
+              <div class="svk_foot_inline">
+                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+                </div>
+                <a class="svk_btn svk_btn_copper svk_btn_full quick-login-m1 scoPage"
+                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_MARKETING&amp;productID=PRODUCT_ID_MARKETING&amp;basket.fill=1&amp;linkTo=product.show"
+                  data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
+                  Purchase the marketing workshop
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M5 12h14"></path>
+                    <path d="m12 5 7 7-7 7"></path>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3. Both workshops (discounted combination) -->
+          <article class="svk_card svk_card_wide svk_card_combo" data-svk-price="1500">
+            <div class="svk_combo_main">
+              <span class="svk_badge">Attend both</span>
+              <h2 class="svk_h3">Growth Diagnostic + Growth Marketing Workshops</h2>
+              <p class="svk_date">December 8 &amp; 10, 2026 · 11 a.m.–2 p.m. ET</p>
+              <p class="svk_card_desc">Assess your foundation on December 8, then build your demand plan on December 10.
+              </p>
+            </div>
+            <div class="svk_combo_side">
+              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+              </div>
+              <a class="svk_btn svk_btn_light svk_btn_full quick-login-m1 scoPage"
+                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COMBINED&amp;productID=PRODUCT_ID_COMBINED&amp;basket.fill=1&amp;linkTo=product.show"
+                data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
+                Purchase both workshops
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
+          <!-- 4. 90-Day Growth Foundation Coaching QuickStart -->
+          <article class="svk_card svk_card_wide svk_card_coach" id="svk-coaching" data-svk-price="1500">
+            <div>
+              <div class="svk_card_head">
+                <span class="svk_icon svk_icon_blue">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M12 13v8"></path>
+                    <path d="M12 3v3"></path>
+                    <path
+                      d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z">
+                    </path>
+                  </svg>
+                </span>
+                <h2 class="svk_h3">90-Day Growth Foundation Coaching QuickStart</h2>
+              </div>
+              <p class="svk_date">90 days · Six private sessions · With Susan Van Klink</p>
+              <p class="svk_card_desc">A personalized coaching partnership to work through your company’s next growth
+                decisions and develop your role as a founder.</p>
+            </div>
+            <div class="svk_card_foot">
+              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+              </div>
+              <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage"
+                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COACHING&amp;productID=PRODUCT_ID_COACHING&amp;basket.fill=1&amp;linkTo=product.show"
+                data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
+                Purchase your spot
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                  stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <path d="M5 12h14"></path>
+                  <path d="m12 5 7 7-7 7"></path>
+                </svg>
+              </a>
+            </div>
+          </article>
+
         </div>
       </div>
+    </section>
 
-      <div class="svk_cards">
+  </div>
 
-        <!-- 1. Growth Diagnostic Workshop -->
-        <article class="svk_card" id="svk-workshops" data-svk-price="1500">
-          <div class="svk_card_head">
-            <span class="svk_icon svk_icon_dusty">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><path d="m16.24 7.76-1.804 5.411a2 2 0 0 1-1.265 1.265L7.76 16.24l1.804-5.411a2 2 0 0 1 1.265-1.265z"></path></svg>
-            </span>
-            <h2 class="svk_h3">Growth Diagnostic Workshop</h2>
-          </div>
-          <p class="svk_date">December 8, 2026 · 11 a.m.–2 p.m. ET</p>
-          <p class="svk_card_desc">Understand what your early traction proves, identify your most important growth foundation gap, and decide what to work on before you hire, spend or scale.</p>
-          <div class="svk_card_foot">
-            <div class="svk_foot_inline">
-              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span></div>
-              <a class="svk_btn svk_btn_dusty svk_btn_full quick-login-m1 scoPage" href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_DIAGNOSTIC&amp;productID=PRODUCT_ID_DIAGNOSTIC&amp;basket.fill=1&amp;linkTo=product.show" data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
-                Purchase the diagnostic workshop
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+  <script>
+    (function () {
+      'use strict';
+      var root = document.getElementById('svk-growth-register-embed');
+      if (!root) return;
 
-        <!-- 2. Growth Marketing Workshop -->
-        <article class="svk_card" data-svk-price="1500">
-          <div class="svk_card_head">
-            <span class="svk_icon svk_icon_copper">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 6a13 13 0 0 0 8.4-2.8A1 1 0 0 1 21 4v12a1 1 0 0 1-1.6.8A13 13 0 0 0 11 14H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2z"></path><path d="M6 14a12 12 0 0 0 2.4 7.2 2 2 0 0 0 3.2-2.4A8 8 0 0 1 10 14"></path><path d="M8 6v8"></path></svg>
-            </span>
-            <h2 class="svk_h3">Growth Marketing Workshop</h2>
-          </div>
-          <p class="svk_date">December 10, 2026 · 11 a.m.–2 p.m. ET</p>
-          <p class="svk_card_desc">Clarify your message, focus your marketing effort, and design your first demand generation test—with a clear decision about what to launch or strengthen first.</p>
-          <div class="svk_card_foot">
-            <div class="svk_foot_inline">
-              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span></div>
-              <a class="svk_btn svk_btn_copper svk_btn_full quick-login-m1 scoPage" href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_MARKETING&amp;productID=PRODUCT_ID_MARKETING&amp;basket.fill=1&amp;linkTo=product.show" data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
-                Purchase the marketing workshop
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-              </a>
-            </div>
-          </div>
-        </article>
+      var topbar = root.querySelector('.svk_topbar');
+      var navToggle = root.querySelector('.svk_nav_toggle');
+      var subItems = root.querySelectorAll('.svk_has_sub');
 
-        <!-- 3. Both workshops (discounted combination) -->
-        <article class="svk_card svk_card_wide svk_card_combo" data-svk-price="1500">
-          <div class="svk_combo_main">
-            <span class="svk_badge">Attend both</span>
-            <h2 class="svk_h3">Growth Diagnostic + Growth Marketing Workshops</h2>
-            <p class="svk_date">December 8 &amp; 10, 2026 · 11 a.m.–2 p.m. ET</p>
-            <p class="svk_card_desc">Assess your foundation on December 8, then build your demand plan on December 10.</p>
-          </div>
-          <div class="svk_combo_side">
-            <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span></div>
-            <a class="svk_btn svk_btn_light svk_btn_full quick-login-m1 scoPage" href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COMBINED&amp;productID=PRODUCT_ID_COMBINED&amp;basket.fill=1&amp;linkTo=product.show" data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
-              Purchase both workshops
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </a>
-          </div>
-        </article>
-
-        <!-- 4. 90-Day Growth Foundation Coaching QuickStart -->
-        <article class="svk_card svk_card_wide svk_card_coach" id="svk-coaching" data-svk-price="1500">
-          <div>
-            <div class="svk_card_head">
-              <span class="svk_icon svk_icon_blue">
-                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 13v8"></path><path d="M12 3v3"></path><path d="M4 6a1 1 0 0 0-1 1v5a1 1 0 0 0 1 1h13a2 2 0 0 0 1.152-.365l3.424-2.317a1 1 0 0 0 0-1.635l-3.424-2.318A2 2 0 0 0 17 6z"></path></svg>
-              </span>
-              <h2 class="svk_h3">90-Day Growth Foundation Coaching QuickStart</h2>
-            </div>
-            <p class="svk_date">90 days · Six private sessions · With Susan Van Klink</p>
-            <p class="svk_card_desc">A personalized coaching partnership to work through your company’s next growth decisions and develop your role as a founder.</p>
-          </div>
-          <div class="svk_card_foot">
-            <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span></div>
-            <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage" href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COACHING&amp;productID=PRODUCT_ID_COACHING&amp;basket.fill=1&amp;linkTo=product.show" data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
-              Purchase your spot
-              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
-            </a>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </section>
-
-</div>
-
-<script>
-  (function () {
-    'use strict';
-    var root = document.getElementById('svk-growth-register-embed');
-    if (!root) return;
-
-    // CMS top nav: keep only Events and add Registrations in front of it.
-    // REGISTRATIONS_URL: this page by default; swap for the short URL once it's set up.
-    var REGISTRATIONS_URL = window.location.pathname;
-    var menu = document.querySelector('#collapseMenubar > ul.hr-navbar');
-    if (menu && !menu.querySelector('.svk_nav_reg')) {
-      var events = null;
-      Array.prototype.forEach.call(menu.children, function (li) {
-        var link = li.querySelector(':scope > a');
-        if (!events && link && /\/events\//.test(link.getAttribute('href') || '')) {
-          events = li;
-          li.classList.add('svk_nav_keep');
-        } else {
-          li.classList.add('svk_nav_hide');
-        }
-      });
-
-      // We're on the registrations page, so it takes the active state, not Events
-      if (events) {
-        events.classList.remove('menuDropActive');
-        events.classList.add('menuDrop');
-        var eventsLink = events.querySelector(':scope > a');
-        eventsLink.classList.remove('menuActive');
-        eventsLink.classList.add('menu');
+      function setSubOpen(item, open) {
+        item.classList.toggle('svk_is_open', open);
+        item.querySelector('.svk_nav_link').setAttribute('aria-expanded', open ? 'true' : 'false');
       }
 
-      // Strip the Feathr click-tracking attributes from the menu links
-      menu.querySelectorAll('a').forEach(function (a) {
-        a.removeAttribute('data-feathr-click-track');
-        a.removeAttribute('data-feathr-link-aids');
+      function closeMenus() {
+        subItems.forEach(function (item) { setSubOpen(item, false); });
+        if (topbar) topbar.classList.remove('svk_nav_open');
+        if (navToggle) {
+          navToggle.setAttribute('aria-expanded', 'false');
+          navToggle.setAttribute('aria-label', 'Open menu');
+        }
+      }
+
+      // Mobile: hamburger opens the nav panel
+      if (navToggle) {
+        navToggle.addEventListener('click', function () {
+          var open = !topbar.classList.contains('svk_nav_open');
+          topbar.classList.toggle('svk_nav_open', open);
+          navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+          navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+        });
+      }
+
+      // Workshops dropdown: opens on hover (desktop, CSS) and on click/tap
+      subItems.forEach(function (item) {
+        item.querySelector('.svk_nav_link').addEventListener('click', function () {
+          setSubOpen(item, !item.classList.contains('svk_is_open'));
+        });
       });
 
-      var reg = document.createElement('li');
-      reg.className = 'branch menuDropActive svk_nav_keep svk_nav_reg';
-      var regLink = document.createElement('a');
-      regLink.className = 'menuActive';
-      regLink.href = REGISTRATIONS_URL;
-      regLink.textContent = 'Registrations';
-      regLink.setAttribute('aria-current', 'page');
-      reg.appendChild(regLink);
-      menu.insertBefore(reg, events || menu.firstChild);
-    }
-
-    // Smooth-scroll the "Register for ..." links to their cards,
-    // leaving room for the CMS header.
-    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    root.querySelectorAll('[data-svk-scroll]').forEach(function (link) {
-      link.addEventListener('click', function (e) {
-        var target = root.querySelector(link.getAttribute('href'));
-        if (!target) return;
-        e.preventDefault();
-        var top = target.getBoundingClientRect().top + window.pageYOffset - 100;
-        window.scrollTo({ top: top, behavior: reduceMotion ? 'auto' : 'smooth' });
+      document.addEventListener('click', function (e) {
+        if (topbar && !topbar.contains(e.target)) closeMenus();
       });
-    });
-  })();
-
-  // CMS story toolbar ("Meta" link above the story): hide it on this page.
-  // Note: this also hides it for CMS admins viewing the page.
-  (function () {
-    'use strict';
-    function hideToolbar() {
-      document.querySelectorAll('.mp-story-toolbar-wrap').forEach(function (bar) {
-        bar.style.setProperty('display', 'none', 'important');
+      document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape') closeMenus();
       });
-    }
-    hideToolbar();
-    // Run again once the page has loaded, in case the toolbar comes after this embed
-    document.addEventListener('DOMContentLoaded', hideToolbar);
-  })();
-</script>
+
+      // Smooth-scroll in-page links to their section, leaving room for the sticky header
+      var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      root.querySelectorAll('[data-svk-scroll]').forEach(function (link) {
+        link.addEventListener('click', function (e) {
+          var target = root.querySelector(link.getAttribute('href'));
+          if (!target) return;
+          e.preventDefault();
+          closeMenus();
+          var offset = topbar ? topbar.offsetHeight + 16 : 16;
+          var top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+          window.scrollTo({ top: target.id === 'svk-register' ? 0 : top, behavior: reduceMotion ? 'auto' : 'smooth' });
+        });
+      });
+    })();
+  </script>
+</body>
+
+</html>
