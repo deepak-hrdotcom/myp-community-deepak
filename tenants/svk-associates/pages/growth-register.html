@@ -1,10 +1,5 @@
-<!DOCTYPE html>
-<html lang="en">
 
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+
 
   <style>
     /* ==========================================================================
@@ -129,11 +124,12 @@
     }
 
     /* ==========================================================================
-     Container (1200 / 1320 / 1440)
+     Container: 768px (48rem) reading column, like the SVK microsite.
+     Deliberately narrower than the platform 1200/1320/1440 tiers.
      ========================================================================== */
     #svk-growth-register-embed .svk_container {
       width: 100%;
-      max-width: 1200px;
+      max-width: 768px;
       padding-left: 24px;
       padding-right: 24px;
       margin: 0 auto;
@@ -160,12 +156,12 @@
       align-items: center;
       justify-content: center;
       gap: 10px;
-      min-height: 52px;
-      padding: 14px 28px;
+      min-height: 46px;
+      padding: 11px 24px;
       border-radius: 999px !important;
       border: none !important;
       font-family: var(--svk-font-heading) !important;
-      font-size: 16px;
+      font-size: 15px;
       font-weight: 600 !important;
       line-height: 22px;
       text-align: center;
@@ -255,78 +251,75 @@
     }
 
     /* ==========================================================================
-     Options
+     Options: one 768px column of outline cards (matches the SVK microsite form)
      ========================================================================== */
     #svk-growth-register-embed .svk_options {
-      padding: 64px 0 100px;
-      background-color: var(--svk-dusty-tint);
+      padding: 40px 0 96px;
+      background-color: var(--svk-cream);
     }
 
     #svk-growth-register-embed .svk_options_head {
-      max-width: 960px;
-      margin: 0 auto 56px;
-      text-align: center;
-    }
-
-
-    #svk-growth-register-embed .svk_head_actions {
-      margin-top: 32px;
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 14px;
-    }
-
-    #svk-growth-register-embed .svk_head_actions::before,
-    #svk-growth-register-embed .svk_head_actions::after {
-      content: none !important;
-      display: none !important;
+      margin: 0 0 40px;
+      text-align: left;
     }
 
     #svk-growth-register-embed .svk_title {
-      font-size: 40px;
+      font-size: 48px;
       font-weight: 700 !important;
-      line-height: 48px;
+      line-height: 56px;
       letter-spacing: -1px;
     }
 
     #svk-growth-register-embed .svk_options_head p {
-      max-width: 720px;
-      margin: 12px auto 0;
-      font-size: 17px;
-      line-height: 28px;
+      margin-top: 16px;
+      font-size: 18px;
+      line-height: 29px;
+    }
+
+    #svk-growth-register-embed .svk_head_actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    #svk-growth-register-embed .svk_head_actions[hidden] {
+      display: none !important;
+    }
+
+    #svk-growth-register-embed .svk_head_actions::before,
+    #svk-growth-register-embed .svk_head_actions::after,
+    #svk-growth-register-embed .svk_combo_side::before,
+    #svk-growth-register-embed .svk_combo_side::after {
+      content: none !important;
+      display: none !important;
     }
 
     #svk-growth-register-embed .svk_cards {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
     }
 
     #svk-growth-register-embed .svk_card {
       display: flex;
       flex-direction: column;
-      padding: 36px;
-      border-radius: var(--svk-radius-panel);
-      border: 1px solid var(--svk-blue-line);
+      padding: 22px 24px 24px;
+      border-radius: 14px;
+      border: 2px solid var(--svk-soft-gray);
       background-color: var(--svk-cream);
-      box-shadow: 0 2px 6px rgba(39, 75, 100, 0.05);
-      transition: box-shadow 0.3s ease, transform 0.3s var(--svk-ease);
+      transition: border-color 0.2s ease;
     }
 
     #svk-growth-register-embed .svk_card:hover {
-      box-shadow: 0 24px 48px rgba(39, 75, 100, 0.14);
-    }
-
-    #svk-growth-register-embed .svk_card_wide {
-      grid-column: 1 / -1;
+      border-color: var(--svk-dusty-blue);
     }
 
     /* Icon + title on one row */
     #svk-growth-register-embed .svk_card_head {
       display: flex;
       align-items: center;
-      gap: 16px;
+      gap: 12px;
     }
 
     #svk-growth-register-embed .svk_card_head::before,
@@ -340,9 +333,14 @@
       flex-shrink: 0;
       align-items: center;
       justify-content: center;
-      width: 48px;
-      height: 48px;
-      border-radius: 14px;
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+    }
+
+    #svk-growth-register-embed .svk_icon svg {
+      width: 20px;
+      height: 20px;
     }
 
     #svk-growth-register-embed .svk_icon_dusty {
@@ -365,281 +363,124 @@
       color: var(--svk-dark-blue);
     }
 
+    /* Card titles use the body face, like the microsite */
     #svk-growth-register-embed .svk_h3 {
-      font-size: 26px;
-      font-weight: 700 !important;
-      line-height: 32px;
+      font-family: var(--svk-font-body) !important;
+      font-size: 19px;
+      font-weight: 600 !important;
+      line-height: 26px;
     }
 
     #svk-growth-register-embed .svk_date {
-      margin-top: 12px;
-      font-size: 15px;
+      margin-top: 10px;
+      font-size: 14px;
       font-weight: 600 !important;
       line-height: 22px;
       color: var(--svk-dark-blue) !important;
     }
 
     #svk-growth-register-embed .svk_card_desc {
-      margin-top: 12px;
+      margin-top: 8px;
       font-size: 16px;
-      line-height: 26px;
+      line-height: 25px;
     }
 
-    /* Price + button pinned to the card bottom */
-    #svk-growth-register-embed .svk_card_foot {
-      margin-top: auto;
-      padding-top: 32px;
+    /* Price + button row under a hairline */
+    #svk-growth-register-embed .svk_card_foot,
+    #svk-growth-register-embed .svk_card_combo .svk_combo_side {
+      margin-top: 20px;
+      padding-top: 18px;
+      border-top: 1px solid var(--svk-blue-line);
+    }
+
+    #svk-growth-register-embed .svk_foot_inline,
+    #svk-growth-register-embed .svk_card_coach .svk_card_foot,
+    #svk-growth-register-embed .svk_card_combo .svk_combo_side {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px 24px;
     }
 
     #svk-growth-register-embed .svk_price {
       display: flex;
       align-items: baseline;
-      gap: 8px;
-      margin-bottom: 16px;
-      padding-top: 24px;
-      border-top: 1px solid var(--svk-blue-line);
+      gap: 6px;
     }
 
     #svk-growth-register-embed .svk_price_amount {
       font-family: var(--svk-font-heading);
-      font-size: 32px;
+      font-size: 22px;
       font-weight: 700;
-      line-height: 36px;
-      letter-spacing: -0.5px;
+      line-height: 28px;
       color: var(--svk-dark-blue);
     }
 
     #svk-growth-register-embed .svk_price_cur {
-      font-family: var(--svk-font-heading);
+      font-family: var(--svk-font-body);
       font-size: 14px;
       font-weight: 600;
       line-height: 20px;
       color: var(--svk-dark-blue);
     }
 
-    /* Workshop cards: price and button on one row (wraps when narrow) */
-    #svk-growth-register-embed .svk_foot_inline {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 16px 24px;
-      padding-top: 24px;
-      border-top: 1px solid var(--svk-blue-line);
-    }
-
-    #svk-growth-register-embed .svk_foot_inline .svk_price {
-      flex: 0 0 auto;
-      margin: 0;
-      padding: 0;
-      border-top: 0;
-    }
-
-    #svk-growth-register-embed .svk_foot_inline .svk_btn {
-      flex: 1 1 260px;
+    #svk-growth-register-embed .svk_card .svk_btn_full {
       width: auto;
     }
 
-    /* Wide cards: price and button stacked, centred */
-    #svk-growth-register-embed .svk_card_wide .svk_price {
-      justify-content: center;
-    }
-
-    /* Combined workshops: Dark Blue feature card */
-    #svk-growth-register-embed .svk_card_combo {
-      background-color: var(--svk-dark-blue);
-      border-color: var(--svk-dark-blue);
-      flex-direction: row;
-      align-items: center;
-      gap: 48px;
-    }
-
-    #svk-growth-register-embed .svk_card_combo .svk_combo_main {
-      flex: 1 1 auto;
-      min-width: 0;
-    }
-
-    #svk-growth-register-embed .svk_card_combo .svk_combo_side {
-      flex: 0 0 300px;
-    }
-
-    #svk-growth-register-embed .svk_card_combo h2 {
-      color: var(--svk-cream) !important;
-    }
-
-    #svk-growth-register-embed .svk_card_combo p {
-      color: var(--svk-cream-soft) !important;
-    }
-
-    #svk-growth-register-embed .svk_card_combo .svk_date {
-      color: var(--svk-cream) !important;
-    }
-
+    /* Combined workshops: same outline card, copper "Attend both" tag */
     #svk-growth-register-embed .svk_badge {
       display: inline-block;
-      margin-bottom: 14px;
-      padding: 5px 14px;
+      margin-bottom: 12px;
+      padding: 3px 12px;
       border-radius: 999px;
-      border: 1px solid rgba(173, 113, 62, 0.6);
-      background-color: rgba(173, 113, 62, 0.22);
+      border: 1px solid var(--svk-copper);
+      background-color: rgba(173, 113, 62, 0.1);
       font-family: var(--svk-font-heading);
       font-size: 12px;
       font-weight: 600;
       line-height: 18px;
       letter-spacing: 1px;
       text-transform: uppercase;
-      color: var(--svk-cream);
-    }
-
-    #svk-growth-register-embed .svk_card_combo .svk_price {
-      border-top: 0;
-      padding-top: 0;
-    }
-
-    #svk-growth-register-embed .svk_card_combo .svk_price_amount,
-    #svk-growth-register-embed .svk_card_combo .svk_price_cur {
-      color: var(--svk-cream);
-    }
-
-    /* Coaching card: content left, price right */
-    #svk-growth-register-embed .svk_card_coach {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) 300px;
-      column-gap: 48px;
-      align-items: end;
-    }
-
-    #svk-growth-register-embed .svk_card_coach .svk_card_foot {
-      padding-top: 0;
-    }
-
-    /* Side-column price needs no divider (restored when stacked) */
-    #svk-growth-register-embed .svk_card_coach .svk_price {
-      border-top: 0;
-      padding-top: 0;
+      color: var(--svk-copper);
     }
 
     /* ==========================================================================
-     Wide-screen tiers
+     Mobile
      ========================================================================== */
-    @media (min-width: 1200px) {
-      #svk-growth-register-embed .svk_container {
-        max-width: 1320px;
-        padding-left: 28px;
-        padding-right: 28px;
-      }
-
-      #svk-growth-register-embed .svk_title {
-        font-size: 44px;
-        line-height: 52px;
-      }
-
-      #svk-growth-register-embed .svk_card {
-        padding: 40px;
-      }
-    }
-
-    @media (min-width: 1440px) {
-      #svk-growth-register-embed .svk_container {
-        max-width: 1440px;
-        padding-left: 32px;
-        padding-right: 32px;
-      }
-
-      #svk-growth-register-embed .svk_title {
-        font-size: 48px;
-        line-height: 56px;
-      }
-
-      #svk-growth-register-embed .svk_h3 {
-        font-size: 28px;
-        line-height: 34px;
-      }
-
-      #svk-growth-register-embed .svk_card {
-        padding: 44px;
-      }
-
-      #svk-growth-register-embed .svk_cards {
-        gap: 32px;
-      }
-    }
-
-    /* ==========================================================================
-     Tablet & mobile
-     ========================================================================== */
-    @media (max-width: 991px) {
-      #svk-growth-register-embed .svk_card_combo {
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-      }
-
-      #svk-growth-register-embed .svk_card_combo .svk_combo_side {
-        flex-basis: auto;
-        padding-top: 32px;
-      }
-
-      #svk-growth-register-embed .svk_card_coach {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      #svk-growth-register-embed .svk_card_coach .svk_card_foot {
-        padding-top: 32px;
-      }
-
-      #svk-growth-register-embed .svk_card_coach .svk_price {
-        border-top: 1px solid var(--svk-blue-line);
-        padding-top: 24px;
-      }
-    }
-
-    @media (max-width: 899px) {
-      #svk-growth-register-embed .svk_cards {
-        grid-template-columns: minmax(0, 1fr);
-      }
-    }
-
     @media (max-width: 599px) {
       #svk-growth-register-embed .svk_options {
-        padding: 56px 0 72px;
+        padding: 32px 0 72px;
       }
 
       #svk-growth-register-embed .svk_title {
-        font-size: 32px;
-        line-height: 38px;
+        font-size: 36px;
+        line-height: 42px;
       }
 
-      #svk-growth-register-embed .svk_card {
-        padding: 28px 22px;
-      }
-
-      #svk-growth-register-embed .svk_h3 {
-        font-size: 23px;
-        line-height: 29px;
-      }
-
-      #svk-growth-register-embed .svk_options {
-        padding-top: 40px;
+      #svk-growth-register-embed .svk_options_head p {
+        font-size: 17px;
+        line-height: 27px;
       }
 
       #svk-growth-register-embed .svk_head_actions .svk_btn {
         width: 100%;
       }
 
-      #svk-growth-register-embed .svk_icon {
-        width: 42px;
-        height: 42px;
-        border-radius: 12px;
+      #svk-growth-register-embed .svk_card {
+        padding: 18px;
       }
 
-      #svk-growth-register-embed .svk_card_head {
-        gap: 14px;
+      #svk-growth-register-embed .svk_h3 {
+        font-size: 17px;
+        line-height: 24px;
       }
 
-      #svk-growth-register-embed .svk_card .svk_btn {
+      #svk-growth-register-embed .svk_card .svk_btn_full {
+        width: 100%;
         padding-left: 16px;
         padding-right: 16px;
-        font-size: 15px;
       }
 
       #svk-growth-register-embed .svk_card .svk_btn svg {
@@ -658,20 +499,38 @@
       display: none !important;
     }
 
+    /* CMS footer bars: replaced by this page's own footer (bottom of the root) */
+    .FooterMidBG,
+    .FooterBottomBG {
+      display: none !important;
+    }
+
+    /* CMS story toolbar (Meta | Categorize | Edit; logged out: Meta only): an unclassed div, matched by its links */
+    div:has(> a[href*="action=editStory_start"]),
+    div:has(> a[href*="/tools/seo/metadataValue"]) {
+      display: none !important;
+    }
+
+    /* CMS content wrapper: drop its top margin so the page header sits flush */
+    .ContentArea {
+      margin-top: 0 !important;
+    }
+
     #svk-growth-register-embed .svk_topbar {
       position: sticky;
       top: 0;
       z-index: 1000;
       background-color: var(--svk-cream);
-      border-bottom: 1px solid var(--svk-blue-line);
     }
 
+    /* Header runs a little wider (896px / 56rem) than the 768px content column */
     #svk-growth-register-embed .svk_topbar_bar {
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 24px;
-      height: 84px;
+      max-width: 896px;
+      height: 72px;
     }
 
     #svk-growth-register-embed .svk_topbar_bar::before,
@@ -686,8 +545,8 @@
 
     /* The CDN logo is a JPG (blue on white); multiply drops the white onto the cream bar */
     #svk-growth-register-embed .svk_logo_img {
-      width: 64px;
-      height: 64px;
+      width: 60px;
+      height: 60px;
       max-width: none;
       object-fit: contain;
       mix-blend-mode: multiply;
@@ -721,13 +580,17 @@
       -webkit-appearance: none;
       appearance: none;
       font-family: var(--svk-font-body) !important;
-      font-size: 16px;
-      font-weight: 600 !important;
+      font-size: 15px;
+      font-weight: 400 !important;
       line-height: 22px;
       color: var(--svk-dark-blue) !important;
       text-decoration: none !important;
       cursor: pointer;
       transition: color 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_nav_link.svk_is_current {
+      font-weight: 600 !important;
     }
 
     #svk-growth-register-embed .svk_nav_link:hover,
@@ -797,11 +660,19 @@
       color: var(--svk-copper) !important;
     }
 
-    /* Login: no link yet */
+    /* Login: opens the platform login/sign-up modal */
     #svk-growth-register-embed .svk_login {
       min-height: 44px;
       padding: 10px 26px;
       font-size: 15px;
+    }
+
+    /* Logged in: the CMS header gets id="loggedIn_TopLink" and a Logout link, so drop Login
+       (script fallback adds .svk_logged_in where :has() is unsupported) */
+    body:has(#loggedIn_TopLink) #svk-growth-register-embed .svk_login,
+    body:has(a[href*="/app/my/logout"]) #svk-growth-register-embed .svk_login,
+    #svk-growth-register-embed.svk_logged_in .svk_login {
+      display: none !important;
     }
 
     /* Hamburger (mobile only) */
@@ -858,30 +729,10 @@
       }
     }
 
-    @media (min-width: 1200px) {
-      #svk-growth-register-embed .svk_topbar_bar {
-        height: 92px;
-      }
-
-      #svk-growth-register-embed .svk_logo_img {
-        width: 72px;
-        height: 72px;
-      }
-
-      #svk-growth-register-embed .svk_nav_link {
-        padding: 0 16px;
-        font-size: 17px;
-      }
-    }
-
     @media (max-width: 991px) {
-      #svk-growth-register-embed .svk_topbar_bar {
-        height: 72px;
-      }
-
       #svk-growth-register-embed .svk_logo_img {
-        width: 56px;
-        height: 56px;
+        width: 52px;
+        height: 52px;
       }
 
       #svk-growth-register-embed .svk_nav_toggle {
@@ -957,7 +808,129 @@
       }
     }
 
+    /* ==========================================================================
+     Footer (same as the SVK site footer in svk-logout-home-template.html),
+     aligned to this page's 896px header width
+     ========================================================================== */
+    #svk-growth-register-embed .svk_footer {
+      background-color: var(--svk-taupe);
+      color: var(--svk-cream);
+    }
+
+    #svk-growth-register-embed .svk_footer_inner {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      max-width: 896px;
+      padding-top: 24px;
+      padding-bottom: 24px;
+      text-align: center;
+    }
+
+    #svk-growth-register-embed .svk_footer_inner::before,
+    #svk-growth-register-embed .svk_footer_inner::after,
+    #svk-growth-register-embed .svk_social::before,
+    #svk-growth-register-embed .svk_social::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    #svk-growth-register-embed .svk_copy {
+      font-family: var(--svk-font-body) !important;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 22px;
+      color: var(--svk-cream) !important;
+    }
+
+    #svk-growth-register-embed .svk_social {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    #svk-growth-register-embed .svk_social a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      transition: background-color 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_social svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+      fill: var(--svk-cream);
+    }
+
+    #svk-growth-register-embed .svk_social a:hover,
+    #svk-growth-register-embed .svk_social a:focus-visible {
+      background-color: var(--svk-dark-blue);
+    }
+
+    /* Back to top */
+    #svk-growth-register-embed .svk_to_top {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 46px;
+      height: 46px;
+      margin: 0;
+      border-radius: var(--svk-radius-button);
+      background-color: var(--svk-dark-blue);
+      border: 1px solid rgba(255, 253, 249, 0.4) !important;
+      box-shadow: 0 10px 24px rgba(39, 75, 100, 0.3);
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: opacity 0.25s ease, transform 0.3s var(--svk-ease), visibility 0s linear 0.3s, background-color 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_to_top.svk_is_visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+      transition: opacity 0.25s ease, transform 0.3s var(--svk-ease), visibility 0s, background-color 0.2s ease;
+    }
+
+    #svk-growth-register-embed .svk_to_top:hover {
+      background-color: var(--svk-copper);
+    }
+
+    #svk-growth-register-embed .svk_to_top svg {
+      display: block;
+      width: 16px;
+      height: 16px;
+      fill: none;
+      stroke: var(--svk-cream);
+      stroke-width: 2.2;
+    }
+
+    @media (min-width: 768px) {
+      #svk-growth-register-embed .svk_footer_inner {
+        flex-direction: row;
+        justify-content: space-between;
+        min-height: 88px;
+        text-align: left;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
+
+      #svk-growth-register-embed .svk_to_top {
+        transition: none;
+      }
 
       #svk-growth-register-embed .svk_btn,
       #svk-growth-register-embed .svk_btn svg,
@@ -971,9 +944,7 @@
       }
     }
   </style>
-</head>
 
-<body>
 
 
 
@@ -982,14 +953,18 @@
   Visitors arrive from the SVK Lovable microsite. Each purchase button uses the
   CMS quick-login-m1 + scoPage pop-up (sign-up, password, Stripe, consents).
 
-  TO UPDATE BEFORE PUBLISHING (search for these placeholders):
-    PRODUCT_ID_DIAGNOSTIC  Growth Diagnostic Workshop (Dec 8)
-    PRODUCT_ID_MARKETING   Growth Marketing Workshop (Dec 10)
-    PRODUCT_ID_COMBINED    Both workshops (discounted combination)
-    PRODUCT_ID_COACHING    90-Day Growth Foundation Coaching QuickStart
+  Product IDs:
+    1793388552617  Growth Diagnostic Workshop (Dec 8)
+    1793388885795  Growth Marketing Workshop (Dec 10)
+    1793389033999  Both workshops (discounted combination)
+    1793653282604  90-Day Growth Foundation Coaching QuickStart
   Each ID appears twice in its button href (vars= and productID=).
   Prices: all set to the 1,500 placeholder for now (data-svk-price on each card).
 -->
+  <link
+  rel="stylesheet"
+  href="https://svk.myp.community/en?t=/merchant/fastCheckout/style.css"
+/>
   <div id="svk-growth-register-embed" class="svk-growth-register-embed">
 
     <!-- Page header (the CMS header is hidden on this page) -->
@@ -1025,8 +1000,10 @@
               </ul>
             </li>
           </ul>
-          <!-- Login: no link yet -->
-          <button type="button" class="svk_btn svk_btn_primary svk_login">Login</button>
+          <!-- Platform login: keep the new-login class and data-* attributes (they open #myModal_Login_Signup).
+               The modal lives in the hidden CMS header; the script moves it to <body>. -->
+          <button type="button" class="svk_btn svk_btn_primary svk_login new-login" data-toggle="modal"
+            data-target="#myModal_Login_Signup" data-page-url="/en?t=/CustomCode/quick_login/ambassador">Login</button>
         </nav>
       </div>
     </header>
@@ -1039,7 +1016,8 @@
           <p>Choose the Diagnostic Workshop to assess your foundation, the Marketing Workshop to develop demand beyond
             your network, or Coaching QuickStart for personalized support over 90 days. Take either workshop
             independently or attend both.</p>
-          <div class="svk_head_actions">
+          <!-- Hidden for now (hidden attribute); remove it to bring the buttons back -->
+          <div class="svk_head_actions" hidden>
             <a class="svk_btn svk_btn_primary" href="#svk-workshops" data-svk-scroll>
               Register for Workshops
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1086,7 +1064,7 @@
                 <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
                 </div>
                 <a class="svk_btn svk_btn_dusty svk_btn_full quick-login-m1 scoPage"
-                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_DIAGNOSTIC&amp;productID=PRODUCT_ID_DIAGNOSTIC&amp;basket.fill=1&amp;linkTo=product.show"
+                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793388552617&amp;productID=1793388552617&amp;basket.fill=1&amp;linkTo=product.show"
                   data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
                   Purchase the diagnostic workshop
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1122,7 +1100,7 @@
                 <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
                 </div>
                 <a class="svk_btn svk_btn_copper svk_btn_full quick-login-m1 scoPage"
-                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_MARKETING&amp;productID=PRODUCT_ID_MARKETING&amp;basket.fill=1&amp;linkTo=product.show"
+                  href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793388885795&amp;productID=1793388885795&amp;basket.fill=1&amp;linkTo=product.show"
                   data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
                   Purchase the marketing workshop
                   <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1147,8 +1125,8 @@
             <div class="svk_combo_side">
               <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
               </div>
-              <a class="svk_btn svk_btn_light svk_btn_full quick-login-m1 scoPage"
-                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COMBINED&amp;productID=PRODUCT_ID_COMBINED&amp;basket.fill=1&amp;linkTo=product.show"
+              <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage"
+                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793389033999&amp;productID=1793389033999&amp;basket.fill=1&amp;linkTo=product.show"
                 data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
                 Purchase both workshops
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1184,7 +1162,7 @@
               <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
               </div>
               <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage"
-                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=PRODUCT_ID_COACHING&amp;productID=PRODUCT_ID_COACHING&amp;basket.fill=1&amp;linkTo=product.show"
+                href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793653282604&amp;productID=1793653282604&amp;basket.fill=1&amp;linkTo=product.show"
                 data-feathr-click-track="true" data-feathr-link-aids="6127cfab0dc20e810ab012ed">
                 Purchase your spot
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1200,6 +1178,39 @@
       </div>
     </section>
 
+    <!-- Footer (the CMS footer bars are hidden on this page); icons inlined: the CMS sprite isn't on this template -->
+    <footer class="svk_footer">
+      <div class="svk_container svk_footer_inner">
+        <p class="svk_copy">Copyright 2026 | SVK &amp; Associates | All Rights Reserved</p>
+        <ul class="svk_social">
+          <li>
+            <a href="https://twitter.com/svanklink" target="_blank" rel="noopener noreferrer" title="X" aria-label="X">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z">
+                </path>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/company/susanvanklink-com/about/" target="_blank" rel="noopener noreferrer"
+              title="LinkedIn" aria-label="LinkedIn">
+              <svg viewBox="0 0 29.087 29.167" aria-hidden="true">
+                <path
+                  d="M-313.869,332.667V320.4s.192-3.388-2.684-3.388a3,3,0,0,0-3.2,2.492v13.166h-6.391V312h5.177v5.009s.509-5.009,7.094-5.009,6.456,8.4,6.456,8.4v12.271Zm-22.631,0V312h6v20.667Zm0-26.167a3,3,0,0,1,3-3,3,3,0,0,1,3,3,3,3,0,0,1-3,3A3,3,0,0,1-336.5,306.5Z"
+                  transform="translate(336.5 -303.5)"></path>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </footer>
+    <button type="button" class="svk_to_top" aria-label="Go to Top">
+      <svg viewBox="0 0 16 16" aria-hidden="true">
+        <path d="M3 10.5 8 5.5l5 5" />
+      </svg>
+    </button>
+
   </div>
 
   <script>
@@ -1207,6 +1218,12 @@
       'use strict';
       var root = document.getElementById('svk-growth-register-embed');
       if (!root) return;
+
+      // Hide the CMS story toolbar (Meta | Categorize | Edit) where :has() is unsupported
+      document.querySelectorAll('a[href*="action=editStory_start"], a[href*="/tools/seo/metadataValue"]').forEach(function (a) {
+        var bar = a.parentElement;
+        if (bar && bar.tagName === 'DIV' && !root.contains(bar)) bar.style.setProperty('display', 'none', 'important');
+      });
 
       var topbar = root.querySelector('.svk_topbar');
       var navToggle = root.querySelector('.svk_nav_toggle');
@@ -1246,9 +1263,51 @@
       document.addEventListener('click', function (e) {
         if (topbar && !topbar.contains(e.target)) closeMenus();
       });
+
+      // Login: the CMS header (.TopLink_new) is hidden on this page, but for logged-out
+      // visitors it holds the login and forgot-password modals. Move them to <body>
+      // so Bootstrap can show them while the header stays hidden.
+      function freeHostModals() {
+        document.querySelectorAll('.TopLink_new .modal').forEach(function (m) {
+          document.body.appendChild(m);
+        });
+      }
+      freeHostModals();
+      document.addEventListener('DOMContentLoaded', freeHostModals);
+
+      // Logged in: hide Login (CSS :has() does this too; this covers older browsers)
+      if (document.getElementById('loggedIn_TopLink') || document.querySelector('a[href*="/app/my/logout"]')) {
+        root.classList.add('svk_logged_in');
+      }
+
+      var login = root.querySelector('.new-login');
+      if (login) {
+        // Like the CMS button: send the visitor back to this page after login
+        login.setAttribute('data-page-url', window.location.href);
+        login.addEventListener('click', function () {
+          closeMenus();
+          freeHostModals();
+        });
+      }
       document.addEventListener('keydown', function (e) {
         if (e.key === 'Escape') closeMenus();
       });
+
+      // Back to top: shows after 600px and sits above the footer once it is in view
+      var toTop = root.querySelector('.svk_to_top');
+      var footBar = root.querySelector('.svk_footer');
+      if (toTop && footBar) {
+        var onScroll = function () {
+          toTop.classList.toggle('svk_is_visible', window.pageYOffset > 600);
+          var lift = Math.max(0, window.innerHeight - footBar.getBoundingClientRect().top);
+          toTop.style.bottom = (20 + lift) + 'px';
+        };
+        window.addEventListener('scroll', onScroll, { passive: true });
+        onScroll();
+        toTop.addEventListener('click', function () {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
 
       // Smooth-scroll in-page links to their section, leaving room for the sticky header
       var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
@@ -1265,6 +1324,4 @@
       });
     })();
   </script>
-</body>
-
-</html>
+$designAttribute:splashCheckout
