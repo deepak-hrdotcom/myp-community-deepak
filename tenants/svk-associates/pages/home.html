@@ -605,21 +605,21 @@
     position: relative;
     overflow: hidden;
     aspect-ratio: 3 / 2;
-    background-color: var(--svk-dark-blue);
+    background-color: var(--svk-dusty-tint);
   }
 
   #svk-home-embed .svk_svc_media img {
+    position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
     object-fit: cover;
     filter: grayscale(1);
-    transition: transform 0.8s var(--svk-ease), opacity 0.4s ease;
-    opacity: 0.88;
+    transition: transform 0.8s var(--svk-ease);
   }
 
   #svk-home-embed .svk_svc:hover .svk_svc_media img {
     transform: scale(1.05);
-    opacity: 1;
   }
 
   #svk-home-embed .svk_svc_num {
@@ -653,6 +653,7 @@
   }
 
   #svk-home-embed .svk_svc.is-dark .svk_svc_body h3 { color: var(--svk-cream); }
+  #svk-home-embed .svk_svc.is-dark .svk_svc_body p { color: var(--svk-cream-soft); }
 
   #svk-home-embed .svk_svc_body h3 a { transition: color 0.2s ease; }
   #svk-home-embed .svk_svc_body h3 a:hover { color: var(--svk-copper); }
@@ -1430,7 +1431,7 @@
       <div class="svk_services_grid">
         <article class="svk_svc is-dark svk-reveal">
           <a class="svk_svc_media" href="https://svkassociates.com/executive-coaching/" tabindex="-1" aria-hidden="true">
-            <img src="https://susanvanklink.com/wp-content/uploads/2022/12/ExecCoachingBW.jpg" alt="" width="1000" height="667" loading="lazy">
+            <img src="https://svkassociates.com/wp-content/uploads/2022/12/ExecCoachingBW.jpg" alt="" width="1000" height="667" loading="lazy">
             <span class="svk_svc_num">01</span>
           </a>
           <div class="svk_svc_body">
@@ -1441,7 +1442,7 @@
         </article>
         <article class="svk_svc svk-reveal" data-delay="1">
           <a class="svk_svc_media" href="https://svkassociates.com/go-to-market-gtm-advisory/" tabindex="-1" aria-hidden="true">
-            <img src="https://susanvanklink.com/wp-content/uploads/2022/12/StrategicAdBW.jpg" alt="" width="1000" height="667" loading="lazy">
+            <img src="https://svkassociates.com/wp-content/uploads/2022/12/StrategicAdBW.jpg" alt="" width="1000" height="667" loading="lazy">
             <span class="svk_svc_num">02</span>
           </a>
           <div class="svk_svc_body">
