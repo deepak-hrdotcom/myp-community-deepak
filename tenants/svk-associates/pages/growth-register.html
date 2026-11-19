@@ -367,7 +367,7 @@
     #svk-growth-register-embed .svk_h3 {
       font-family: var(--svk-font-body) !important;
       font-size: 19px;
-      font-weight: 600 !important;
+      font-weight: 400 !important;
       line-height: 26px;
     }
 
@@ -379,10 +379,30 @@
       color: var(--svk-dark-blue) !important;
     }
 
+    /* Card text is dark blue, like the client form */
     #svk-growth-register-embed .svk_card_desc {
       margin-top: 8px;
-      font-size: 16px;
-      line-height: 25px;
+      font-size: 17px;
+      line-height: 26px;
+      color: var(--svk-dark-blue) !important;
+    }
+
+    /* Detail lines under the description (client copy, verbatim) */
+    #svk-growth-register-embed .svk_details {
+      margin-top: 4px;
+    }
+
+    #svk-growth-register-embed .svk_details p {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 24px;
+      color: var(--svk-dark-blue) !important;
+    }
+
+    #svk-growth-register-embed .svk_details .svk_note {
+      margin-top: 6px;
+      font-weight: 400;
+      font-style: italic;
     }
 
     /* Price + button row under a hairline */
@@ -959,7 +979,7 @@
     1793389033999  Both workshops (discounted combination)
     1793653282604  90-Day Growth Foundation Coaching QuickStart
   Each ID appears twice in its button href (vars= and productID=).
-  Prices: all set to the 1,500 placeholder for now (data-svk-price on each card).
+  Prices (data-svk-price on each card): workshops 750 each, both workshops 1,125, coaching 5,495 (regular price).
 -->
   <link
   rel="stylesheet"
@@ -1044,7 +1064,7 @@
         <div class="svk_cards">
 
           <!-- 1. Growth Diagnostic Workshop -->
-          <article class="svk_card" id="svk-workshops" data-svk-price="1500">
+          <article class="svk_card" id="svk-workshops" data-svk-price="750">
             <div class="svk_card_head">
               <span class="svk_icon svk_icon_dusty">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1056,12 +1076,16 @@
               </span>
               <h2 class="svk_h3">Growth Diagnostic Workshop</h2>
             </div>
-            <p class="svk_date">December 8, 2026 · 11 a.m.–2 p.m. ET</p>
-            <p class="svk_card_desc">Understand what your early traction proves, identify your most important growth
-              foundation gap, and decide what to work on before you hire, spend or scale.</p>
+            <p class="svk_card_desc">Understand what’s holding growth back and identify what to work on next.</p>
+            <div class="svk_details">
+              <p>Tuesday, December 8, 2026 · 11 a.m.–2 p.m. ET</p>
+              <p>Three-hour virtual workshop</p>
+              <p>US$750 per participant</p>
+              <p>Early-bird pricing through December 1, 2026.</p>
+            </div>
             <div class="svk_card_foot">
               <div class="svk_foot_inline">
-                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">750</span>
                 </div>
                 <a class="svk_btn svk_btn_dusty svk_btn_full quick-login-m1 scoPage"
                   href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793388552617&amp;productID=1793388552617&amp;basket.fill=1&amp;linkTo=product.show"
@@ -1078,7 +1102,7 @@
           </article>
 
           <!-- 2. Growth Marketing Workshop -->
-          <article class="svk_card" id="svk-marketing" data-svk-price="1500">
+          <article class="svk_card" id="svk-marketing" data-svk-price="750">
             <div class="svk_card_head">
               <span class="svk_icon svk_icon_copper">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -1092,12 +1116,17 @@
               </span>
               <h2 class="svk_h3">Growth Marketing Workshop</h2>
             </div>
-            <p class="svk_date">December 10, 2026 · 11 a.m.–2 p.m. ET</p>
-            <p class="svk_card_desc">Clarify your message, focus your marketing effort, and design your first demand
-              generation test—with a clear decision about what to launch or strengthen first.</p>
+            <p class="svk_card_desc">Build a focused brand and demand plan to reach customers beyond your network.</p>
+            <div class="svk_details">
+              <p>Thursday, December 10, 2026 · 11 a.m.–2 p.m. ET</p>
+              <p>Three-hour virtual workshop</p>
+              <p>US$750 per participant</p>
+              <p>Early-bird pricing through December 1, 2026.</p>
+              <p class="svk_note">Includes a 45-minute one-on-one follow-up with an SVK facilitator.</p>
+            </div>
             <div class="svk_card_foot">
               <div class="svk_foot_inline">
-                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+                <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">750</span>
                 </div>
                 <a class="svk_btn svk_btn_copper svk_btn_full quick-login-m1 scoPage"
                   href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793388885795&amp;productID=1793388885795&amp;basket.fill=1&amp;linkTo=product.show"
@@ -1114,16 +1143,16 @@
           </article>
 
           <!-- 3. Both workshops (discounted combination) -->
-          <article class="svk_card svk_card_wide svk_card_combo" data-svk-price="1500">
+          <article class="svk_card svk_card_wide svk_card_combo" data-svk-price="1125">
             <div class="svk_combo_main">
               <span class="svk_badge">Attend both</span>
               <h2 class="svk_h3">Growth Diagnostic + Growth Marketing Workshops</h2>
               <p class="svk_date">December 8 &amp; 10, 2026 · 11 a.m.–2 p.m. ET</p>
-              <p class="svk_card_desc">Assess your foundation on December 8, then build your demand plan on December 10.
-              </p>
+              <p class="svk_card_desc">Identify what’s holding growth back on December 8, then build a focused brand and
+                demand plan to reach customers beyond your network on December 10.</p>
             </div>
             <div class="svk_combo_side">
-              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,125</span>
               </div>
               <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage"
                 href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793389033999&amp;productID=1793389033999&amp;basket.fill=1&amp;linkTo=product.show"
@@ -1139,7 +1168,7 @@
           </article>
 
           <!-- 4. 90-Day Growth Foundation Coaching QuickStart -->
-          <article class="svk_card svk_card_wide svk_card_coach" id="svk-coaching" data-svk-price="1500">
+          <article class="svk_card svk_card_wide svk_card_coach" id="svk-coaching" data-svk-price="5495">
             <div>
               <div class="svk_card_head">
                 <span class="svk_icon svk_icon_blue">
@@ -1154,12 +1183,19 @@
                 </span>
                 <h2 class="svk_h3">90-Day Growth Foundation Coaching QuickStart</h2>
               </div>
-              <p class="svk_date">90 days · Six private sessions · With Susan Van Klink</p>
               <p class="svk_card_desc">A personalized coaching partnership to work through your company’s next growth
                 decisions and develop your role as a founder.</p>
+              <div class="svk_details">
+                <p>Six private 60-minute coaching sessions with Susan Van Klink</p>
+                <p>Founder Identity Assessment plus a separate guided debrief, additional to the six sessions</p>
+                <p>Enroll by November 30, 2026, for US$4,995.</p>
+                <p>Regular package price US$5,495</p>
+                <p class="svk_note">Express interest. We’ll arrange a conversation about your goals, fit and current
+                  availability. Submitting this form does not confirm a coaching place.</p>
+              </div>
             </div>
             <div class="svk_card_foot">
-              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">1,500</span>
+              <div class="svk_price"><span class="svk_price_cur">US$</span><span class="svk_price_amount">5,495</span>
               </div>
               <a class="svk_btn svk_btn_primary svk_btn_full quick-login-m1 scoPage"
                 href="/en?t=/merchant/basket.update&amp;ParentID=0&amp;vars=1793653282604&amp;productID=1793653282604&amp;basket.fill=1&amp;linkTo=product.show"
